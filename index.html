@@ -1,0 +1,392 @@
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta name="theme-color" content="#123c35">  
+  <meta name="description" content="شغل الدقهلية: منصة الوظائف وفرص العمل في المنصورة ومراكز وقرى الدقهلية.">  
+  <link rel="manifest" href="./manifest.json">  
+  <title>شغل الدقهلية | منصة الوظائف الحقيقية</title>    <style>  
+    :root {  
+      --green: #123c35;  
+      --mint: #e8f3ee;  
+      --gold: #e8b85a;  
+      --white: #fff;  
+      --red: #a52a2a;  
+    }  
+    * { box-sizing: border-box; }  
+    body {  
+      margin: 0;  
+      font-family: Tahoma, Arial, sans-serif;  
+      background: var(--mint);  
+      color: #20342e;  
+      line-height: 1.8;  
+    }  
+    header {  
+      background: var(--green);  
+      color: white;  
+      text-align: center;  
+      padding: 25px 15px;  
+    }  
+    header h1 { margin: 0 0 5px; }  
+    header p { margin: 0; }  
+    main { max-width: 760px; margin: auto; padding: 15px; }  
+    .panel {  
+      background: white;  
+      padding: 18px;  
+      border-radius: 15px;  
+      margin: 16px 0;  
+      box-shadow: 0 3px 12px #123c3510;  
+    }  
+    h2 { color: var(--green); margin-top: 0; }  
+    input, select, textarea {  
+      width: 100%;  
+      padding: 12px;  
+      margin: 7px 0;  
+      border: 1px solid #cbd8d1;  
+      border-radius: 9px;  
+      font: inherit;  
+      background: white;  
+    }  
+    textarea { min-height: 100px; resize: vertical; }  
+    button, .whatsapp {  
+      display: inline-block;  
+      border: 0;  
+      border-radius: 9px;  
+      padding: 11px 16px;  
+      font: inherit;  
+      font-weight: bold;  
+      cursor: pointer;  
+      text-decoration: none;  
+    }  
+    button {  
+      width: 100%;  
+      background: var(--green);  
+      color: white;  
+      margin-top: 8px;  
+    }  
+    button:disabled { opacity: .6; }  
+    .whatsapp { background: #16864a; color: white; margin-top: 8px; }  
+    .job {  
+      border: 1px solid #dce8e1;  
+      border-right: 5px solid var(--gold);  
+      border-radius: 10px;  
+      padding: 14px;  
+      margin: 12px 0;  
+      overflow-wrap: anywhere;  
+    }  
+    .job h3 { margin: 0; color: var(--green); }  
+    .notice { font-size: 13px; color: #52645b; }  
+    #status { margin-top: 10px; white-space: pre-wrap; }  
+    .error { color: var(--red); }  
+    .empty { text-align: center; color: #52645b; }  
+    footer { text-align: center; padding: 20px; color: #52645b; }  
+    .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }  
+    @media (max-width: 480px) {  
+      .filters { grid-template-columns: 1fr; }  
+      .panel { padding: 14px; }  
+    }  
+  </style>  </head>  <body>  
+<header>  
+  <h1>شغل الدقهلية</h1>  
+  <p>منصة الوظائف الحقيقية</p>  
+  <p>فرص عمل في المنصورة والمناطق المحيطة</p>  
+</header>  <main>  
+  <section class="panel">  
+    <h2>➕ أضف وظيفة</h2>  
+    <form id="jobForm">  
+      <input id="title" maxlength="100"  
+        placeholder="المسمى الوظيفي *" required>  <input id="company" maxlength="100"  
+    placeholder="اسم الشركة أو صاحب العمل *" required>  
+
+  <select id="area" required>  
+    <option value="">اختر المنطقة *</option>  
+    <option>المنصورة</option>  
+    <option>أويش الحجر</option>  
+    <option>البدالة</option>  
+    <option>البرامون</option>  
+    <option>البقلية</option>  
+    <option>برق العز</option>  
+    <option>بدواي</option>  
+    <option>شها</option>  
+    <option>طناح</option>  
+    <option>ميت بدر خميس</option>  
+    <option>ميت مزاح</option>  
+    <option>محلة الدمنة</option>  
+  </select>  
+
+  <input id="salary" maxlength="100"  
+    placeholder="الراتب (اختياري)">  
+
+  <textarea id="details" maxlength="1500"  
+    placeholder="تفاصيل الوظيفة وشروطها"></textarea>  
+
+  <input id="phone" type="tel" inputmode="tel" maxlength="20"  
+    placeholder="رقم واتساب صاحب الوظيفة *" required>  
+
+  <button id="submitBtn" type="submit">نشر الوظيفة</button>  
+  <p class="notice">  
+    ستظهر الوظيفة بعد مراجعتها والموافقة عليها.  
+    لا تنشر رقم شخص آخر دون إذنه.  
+  </p>  
+</form>  
+<div id="status" role="status" aria-live="polite"></div>
+
+  </section>    <section class="panel">  
+    <h2>📋 الوظائف المتاحة</h2>  <div class="filters">  
+  <input id="search" placeholder="ابحث عن وظيفة أو شركة">  
+
+  <select id="filterArea">  
+    <option value="">كل المناطق</option>  
+    <option>المنصورة</option>  
+    <option>أويش الحجر</option>  
+    <option>البدالة</option>  
+    <option>البرامون</option>  
+    <option>البقلية</option>  
+    <option>برق العز</option>  
+    <option>بدواي</option>  
+    <option>شها</option>  
+    <option>طناح</option>  
+    <option>ميت بدر خميس</option>  
+    <option>ميت مزاح</option>  
+    <option>محلة الدمنة</option>  
+  </select>  
+</div>  
+
+<div id="jobs">  
+  <p class="empty">جاري تحميل الوظائف...</p>  
+</div>
+
+  </section>  
+</main>  <footer>شغل الدقهلية © منصة محلية لعرض فرص العمل</footer>  <script type="module">  
+import { initializeApp } from  
+  "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";  
+  
+import {  
+  getAuth,  
+  signInAnonymously  
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";  
+  
+import {  
+  getFirestore,  
+  collection,  
+  addDoc,  
+  serverTimestamp,  
+  query,  
+  where,  
+  onSnapshot  
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";  
+  
+const firebaseConfig = {  
+  apiKey: "AIzaSyAx1gcyth1EFOCV2z4peE3nP7F5d2IHDOc",  
+  authDomain: "hoghl-dakahlia.firebaseapp.com",  
+  projectId: "hoghl-dakahlia",  
+  storageBucket: "hoghl-dakahlia.firebasestorage.app",  
+  messagingSenderId: "437958970783",  
+  appId: "1:437958970783:web:0399059a90cec0e0aa01aa",  
+  measurementId: "G-2ZKG5V6ESQ"  
+};  
+  
+const app = initializeApp(firebaseConfig);  
+const auth = getAuth(app);  
+const db = getFirestore(app);  
+const $ = id => document.getElementById(id);  
+  
+function showStatus(message, isError = false) {  
+  $("status").textContent = message;  
+  $("status").className = isError ? "error" : "";  
+}  
+  
+function cleanPhone(value) {  
+  return String(value || "").replace(/[^\d]/g, "");  
+}  
+  
+function whatsappNumber(value) {  
+  let number = cleanPhone(value);  
+  
+  // تحويل الرقم المصري المحلي إلى الصيغة الدولية  
+  if (number.startsWith("0")) {  
+    number = "20" + number.substring(1);  
+  } else if (number.startsWith("20")) {  
+    // الرقم بالفعل بصيغة مصر الدولية  
+  }  
+  
+  return number;  
+}  
+  
+function makeElement(tag, text, className = "") {  
+  const node = document.createElement(tag);  
+  node.textContent = text || "";  
+  if (className) node.className = className;  
+  return node;  
+}  
+  
+function renderJobs(allJobs) {  
+  const box = $("jobs");  
+  box.replaceChildren();  
+  
+  const term = $("search").value.trim().toLowerCase();  
+  const area = $("filterArea").value;  
+  
+  const filtered = allJobs.filter(job => {  
+    const text =  
+      `${job.title || ""} ${job.company || ""} ${job.details || ""}`  
+        .toLowerCase();  
+  
+    return (!term || text.includes(term)) &&  
+      (!area || job.area === area);  
+  });  
+  
+  if (!filtered.length) {  
+    box.append(  
+      makeElement(  
+        "p",  
+        "لا توجد وظائف منشورة تطابق بحثك حاليًا.",  
+        "empty"  
+      )  
+    );  
+    return;  
+  }  
+  
+  filtered.forEach(job => {  
+    const card = document.createElement("article");  
+    card.className = "job";  
+  
+    card.append(makeElement("h3", job.title || "وظيفة"));  
+    card.append(makeElement("p", "الشركة: " + (job.company || "غير محدد")));  
+    card.append(makeElement("p", "المنطقة: " + (job.area || "غير محددة")));  
+    card.append(makeElement("p", "الراتب: " + (job.salary || "يحدد عند المقابلة")));  
+  
+    if (job.details) {  
+      card.append(makeElement("p", "التفاصيل: " + job.details));  
+    }  
+  
+    const phone = whatsappNumber(job.phone);  
+  
+    if (phone) {  
+      const link = document.createElement("a");  
+      link.className = "whatsapp";  
+      link.target = "_self";  
+link.rel = "noopener";  
+link.href = "https://api.whatsapp.com/send?phone=" + phone;  
+link.textContent = "التقديم عبر واتساب";  
+      card.append(link);  
+    }  
+  
+    box.append(card);  
+  });  
+}  
+  
+let allJobs = [];  
+  
+$("search").addEventListener("input", () => renderJobs(allJobs));  
+$("filterArea").addEventListener("change", () => renderJobs(allJobs));  
+  
+async function startApp() {  
+  try {  
+    await signInAnonymously(auth);  
+  } catch (error) {  
+    console.error("Authentication error:", error);  
+    showStatus(  
+      "تعذر الاتصال بحساب المستخدم. رمز الخطأ: " +  
+      (error.code || error.message),  
+      true  
+    );  
+  
+    $("jobs").replaceChildren(  
+      makeElement("p", "تعذر الاتصال بقاعدة البيانات.", "empty")  
+    );  
+    return;  
+  }  
+  
+  const approvedQuery = query(  
+    collection(db, "jobs"),  
+    where("status", "==", "approved")  
+  );  
+  
+  onSnapshot(approvedQuery, snapshot => {  
+    allJobs = snapshot.docs.map(item => ({  
+      id: item.id,  
+      ...item.data()  
+    }));  
+    renderJobs(allJobs);  
+  }, error => {  
+    console.error("Load jobs error:", error);  
+  
+    $("jobs").replaceChildren(  
+      makeElement(  
+        "p",  
+        "حصلت مشكلة في تحميل الوظائف. رمز الخطأ: " +  
+          (error.code || error.message),  
+        "empty"  
+      )  
+    );  
+  });  
+}  
+  
+$("jobForm").addEventListener("submit", async event => {  
+  event.preventDefault();  
+  
+  const btn = $("submitBtn");  
+  const title = $("title").value.trim();  
+  const company = $("company").value.trim() || "غير محدد";  
+  const area = $("area").value;  
+  const salary = $("salary").value.trim() || "يحدد عند المقابلة";  
+  const details = $("details").value.trim();  
+  const phone = cleanPhone($("phone").value);  
+  
+  if (!title || !area || phone.length < 10 || phone.length > 15) {  
+    showStatus("راجع اسم الوظيفة والمنطقة ورقم واتساب.", true);  
+    return;  
+  }  
+  
+  btn.disabled = true;  
+  btn.textContent = "جاري النشر...";  
+  showStatus("");  
+  
+  try {  
+    if (!auth.currentUser) {  
+      await signInAnonymously(auth);  
+    }  
+  
+    const docRef = await addDoc(collection(db, "jobs"), {  
+      title,  
+      company,  
+      area,  
+      salary,  
+      details,  
+      phone,  
+      status: "pending",  
+      createdAt: serverTimestamp()  
+    });  
+  
+    $("jobForm").reset();  
+  
+    showStatus(  
+      "تم إرسال الوظيفة للمراجعة بنجاح ❤️ رقم الطلب: " + docRef.id  
+    );  
+  } catch (error) {  
+    console.error("Submit job error:", error);  
+  
+    showStatus(  
+      "لم يتم حفظ الوظيفة. رمز الخطأ: " +  
+      (error.code || "غير معروف") +  
+      "\nالتفاصيل: " + (error.message || "حاول مرة أخرى."),  
+      true  
+    );  
+  } finally {  
+    btn.disabled = false;  
+    btn.textContent = "نشر الوظيفة";  
+  }  
+});  
+  
+startApp();  
+</script>  <script>  
+if ("serviceWorker" in navigator) {  
+  window.addEventListener("load", function () {  
+    navigator.serviceWorker.register("./sw.js")  
+      .catch(function (error) {  
+        console.error("Service Worker error:", error);  
+      });  
+  });  
+}  
+</script></body>  </html>
