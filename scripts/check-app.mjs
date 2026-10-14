@@ -59,5 +59,6 @@ assert(employer.includes('where("ownerUid","==",user.uid)'), "employer dashboard
 assert(employer.includes('where("ownerUid","==",user.uid)') && rules.includes("resource.data.ownerUid == request.auth.uid"), "owner-only job access is represented in the dashboard and Firestore rules");
 assert(employer.includes("function renderSummary()") && employer.includes("job.views") && employer.includes("job.applyClicks"), "employer dashboard displays per-job and account-level analytics");
 assert(employer.includes("function jobAdvice(job)") && employer.includes("راجع تفاصيل الإعلان") && employer.includes("يُفضّل مراجعة الإعلان"), "employer dashboard provides age- and engagement-based ad review hints");
+assert(employer.includes('id="myJobSearch"') && employer.includes('id="myJobStatus"') && employer.includes("visibleJobs.forEach(job=>{"), "employer dashboard supports searching and filtering owned jobs by status");
 
 if (process.exitCode) process.exit(process.exitCode);
