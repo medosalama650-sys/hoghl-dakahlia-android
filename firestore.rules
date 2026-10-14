@@ -1,0 +1,113 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == 'medosalama650@gmail.com';
+    }
+
+    function validJobCreate() {
+      let data = request.resource.data;
+      return data.keys().hasAll([
+          'title', 'company', 'category', 'area', 'salary', 'details',
+          'phone', 'lat', 'lng', 'status', 'featured', 'featureRequested',
+          'featurePaymentStatus', 'employerVerified', 'views', 'applyClicks',
+          'createdAt', 'expiresAt'
+        ])
+        && data.keys().hasOnly([
+          'title', 'company', 'category', 'area', 'salary', 'details',
+          'phone', 'lat', 'lng', 'status', 'featured', 'featureRequested',
+          'featurePaymentStatus', 'employerVerified', 'views', 'applyClicks',
+          'createdAt', 'expiresAt'
+        ])
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 100
+        && data.company is string && data.company.size() > 0 && data.company.size() <= 100
+        && data.category is string && data.category.size() > 0 && data.category.size() <= 60
+        && data.area is string && data.area.size() > 0 && data.area.size() <= 100
+        && data.salary is string && data.salary.size() <= 100
+        && data.details is string && data.details.size() <= 1500
+        && data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 20
+        && (data.lat == null || data.lat is number)
+        && (data.lng == null || data.lng is number)
+        && data.status == 'pending'
+        && data.featured == false
+        && data.featureRequested is bool
+        && data.featurePaymentStatus == (data.featureRequested ? 'pending' : 'not_requested')
+        && data.employerVerified == false
+        && data.views == 0
+        && data.applyClicks == 0
+        && data.createdAt == request.time
+        && data.expiresAt is timestamp;
+    }
+
+    function validAdminJobUpdate() {
+      let changed = request.resource.data.diff(resource.data).affectedKeys();
+      return isAdmin()
+        && changed.hasOnly([
+          'status', 'featured', 'featuredAt', 'employerVerified', 'verifiedAt',
+          'featurePaymentStatus', 'featurePaymentUpdatedAt'
+        ])
+        && (!changed.hasAny(['status'])
+          || request.resource.data.status in ['approved', 'rejected'])
+        && (!changed.hasAny(['featured'])
+          || request.resource.data.featured is bool)
+        && (!changed.hasAny(['featuredAt'])
+          || request.resource.data.featuredAt == null
+          || request.resource.data.featuredAt is timestamp)
+        && (!changed.hasAny(['employerVerified'])
+          || request.resource.data.employerVerified is bool)
+        && (!changed.hasAny(['verifiedAt'])
+          || request.resource.data.verifiedAt == null
+          || request.resource.data.verifiedAt is timestamp)
+        && (!changed.hasAny(['featurePaymentStatus'])
+          || request.resource.data.featurePaymentStatus in ['pending', 'paid'])
+        && (!changed.hasAny(['featurePaymentUpdatedAt'])
+          || request.resource.data.featurePaymentUpdatedAt is timestamp);
+    }
+
+    function validMetricIncrement(field) {
+      return signedIn()
+        && resource.data.status == 'approved'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([field])
+        && request.resource.data.diff(resource.data).affectedKeys().hasAny([field])
+        && resource.data.get(field, 0) is number
+        && request.resource.data.get(field, 0) == resource.data.get(field, 0) + 1;
+    }
+
+    match /jobs/{jobId} {
+      allow read: if isAdmin() || resource.data.status == 'approved';
+      allow create: if signedIn() && validJobCreate();
+      allow update: if validAdminJobUpdate()
+        || validMetricIncrement('views')
+        || validMetricIncrement('applyClicks');
+      allow delete: if isAdmin();
+    }
+
+    match /reports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll([
+          'jobId', 'jobTitle', 'reason', 'status', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'jobId', 'jobTitle', 'reason', 'status', 'createdAt'
+        ])
+        && request.resource.data.jobId is string
+        && request.resource.data.jobTitle is string
+        && request.resource.data.jobTitle.size() <= 100
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() > 0
+        && request.resource.data.reason.size() <= 500
+        && request.resource.data.status == 'new'
+        && request.resource.data.createdAt == request.time;
+      allow read: if isAdmin();
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status == 'reviewed';
+      allow delete: if isAdmin();
+    }
+  }
+}
