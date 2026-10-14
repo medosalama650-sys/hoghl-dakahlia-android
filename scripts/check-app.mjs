@@ -68,5 +68,7 @@ assert(employer.includes('id="myJobSearch"') && employer.includes('id="myJobStat
 assert(employer.includes("Timestamp.fromDate(new Date(Date.now()+30*86400000))") && employer.includes('textContent="🔄 تجديد 30 يومًا"') && employer.includes("expiresAt"), "employer can renew a published job expiry without changing its approval status");
 assert(employer.includes('id="applicationCounts"') && employer.includes('id="applicationStatusFilter"') && employer.includes("function renderApplicationSummary()") && employer.includes("appStatusFilter"), "employer dashboard summarizes application statuses and filters applicant lists");
 assert(employer.includes('id="exportApplicationsBtn"') && employer.includes("function exportApplicationsCsv()") && employer.includes("function csvCell(value)") && employer.includes("currentApplications.map"), "employer can export their own application records as CSV with CSV cell escaping");
+assert(employer.includes('id="enableApplicationNotificationsBtn"') && employer.includes("function enableApplicationNotifications()") && employer.includes("Notification.requestPermission()") && employer.includes("snap.docChanges().filter(change=>change.type===\"added\")"), "employer can opt into browser notifications for new in-platform applications");
+assert(employer.includes("if(stopApplications){stopApplications();stopApplications=null}applicationSnapshotReady=false"), "application listener is stopped and notification baseline reset on sign out");
 
 if (process.exitCode) process.exit(process.exitCode);
