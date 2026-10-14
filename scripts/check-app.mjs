@@ -23,6 +23,7 @@ assert(html.includes('lang="ar" dir="rtl"'), "main page keeps Arabic RTL layout"
 assert(html.includes('https://wa.me/'), "WhatsApp application links remain available");
 assert(html.includes("مشاركة الجهة") && html.includes("navigator.share") && html.includes("clipboard.writeText(text)"), "company directory supports native sharing and clipboard fallback");
 assert(html.includes("function savedSearchMatches(job,filters)") && html.includes("notifySavedSearchMatches(job)") && html.includes("saved-search-alert") && html.includes("alertEnabled"), "saved searches support opt-in matching job notifications");
+assert(html.includes('id="recentSearchesList"') && html.includes("function recordRecentSearch(filters)") && html.includes('localStorage.setItem("shoghlRecentSearches"') && html.includes('id="clearRecentSearches"'), "recent job search history is saved locally and can be restored or cleared");
 assert(html.includes("sendPasswordResetEmail") || employer.includes("sendPasswordResetEmail"), "password reset flow remains in the app");
 assert(html.includes('collection(db,"jobs")'), "main page remains connected to Firestore jobs");
 assert(html.includes("visibleJobLimit=20") && html.includes("filtered.slice(0,visibleJobLimit)"), "job list renders in incremental batches");
