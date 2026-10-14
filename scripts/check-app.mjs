@@ -25,6 +25,7 @@ assert(html.includes("مشاركة الجهة") && html.includes("navigator.shar
 assert(html.includes("function savedSearchMatches(job,filters)") && html.includes("notifySavedSearchMatches(job)") && html.includes("saved-search-alert") && html.includes("alertEnabled"), "saved searches support opt-in matching job notifications");
 assert(html.includes('id="recentSearchesList"') && html.includes("function recordRecentSearch(filters)") && html.includes('localStorage.setItem("shoghlRecentSearches"') && html.includes('id="clearRecentSearches"'), "recent job search history is saved locally and can be restored or cleared");
 assert(html.includes("function cacheSavedJobSnapshots(jobs)") && html.includes("انتهت صلاحية الإعلان في") && html.includes("الوظيفة لم تعد ضمن الإعلانات المنشورة حاليًا") && html.includes('show.disabled=unavailable||isExpired'), "saved jobs clearly identify expired or no-longer-published listings");
+assert(html.includes('id="mobileBottomNav"') && html.includes('data-bottom-nav="saved"') && html.includes("function updateMobileSavedCount()") && html.includes('env(safe-area-inset-bottom,0px)'), "mobile quick navigation includes saved jobs and safe-area spacing");
 assert(html.includes("sendPasswordResetEmail") || employer.includes("sendPasswordResetEmail"), "password reset flow remains in the app");
 assert(html.includes('collection(db,"jobs")'), "main page remains connected to Firestore jobs");
 assert(html.includes("visibleJobLimit=20") && html.includes("filtered.slice(0,visibleJobLimit)"), "job list renders in incremental batches");
