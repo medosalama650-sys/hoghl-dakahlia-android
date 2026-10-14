@@ -3,517 +3,621 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123c35">
-<meta name="description" content="شغل الدقهلية: منصة الوظائف وفرص العمل في المنصورة ومراكز وقرى الدقهلية.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#103b32">
+<meta name="description" content="شغل الدقهلية - فرص عمل حقيقية في المنصورة ومراكز وقرى الدقهلية. أضف وظيفتك أو ابحث عن فرصة عمل.">
+<meta name="color-scheme" content="light">
 <link rel="manifest" href="./manifest.json">
 <title>شغل الدقهلية | منصة الوظائف الحقيقية</title>
 
 <style>
 :root {
-  --green: #123c35;
-  --mint: #e8f3ee;
-  --gold: #e8b85a;
-  --red: #a52a2a;
+  --green:#103b32;
+  --green2:#1b5949;
+  --mint:#eaf4ee;
+  --gold:#e9bd62;
+  --text:#20342e;
+  --muted:#68786f;
+  --line:#dce7df;
+  --white:#fff;
+  --red:#a52a2a;
+  --shadow:0 8px 28px rgba(16,59,50,.07);
 }
 
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:15px}
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f4f7f4;
+  color:var(--text);
+  line-height:1.7;
+  font-size:14px;
 }
-
-body {
-  margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
-  background: var(--mint);
-  color: #20342e;
-  line-height: 1.55;
-  font-size: 14px;
+button,input,select,textarea{font-family:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a{overflow-wrap:anywhere}
+button:focus-visible,a:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:3px;
 }
-
-header {
-  background: var(--green);
-  color: #fff;
-  text-align: center;
-  padding: 10px 12px 12px;
+header{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  background:linear-gradient(140deg,#092b25,#103b32 65%,#205846);
+  padding:16px 16px 30px;
+  border-radius:0 0 28px 28px;
+  box-shadow:0 8px 24px #103b321c;
 }
-
-.prophet-banner {
-  display: inline-block;
-  margin-bottom: 4px;
-  padding: 2px 10px;
-  border: 1px solid var(--gold);
-  border-radius: 20px;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: bold;
+header:before,header:after{
+  content:"";
+  position:absolute;
+  border:1px solid #ffffff15;
+  border-radius:50%;
+  pointer-events:none;
 }
-
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  max-width: 760px;
-  margin: 3px auto 6px;
+header:before{
+  width:220px;height:220px;right:-90px;top:-120px;
 }
-
-.brand {
-  text-align: right;
-  min-width: 0;
+header:after{
+  width:160px;height:160px;left:-65px;bottom:-105px;
 }
-
-.brand h1 {
-  margin: 0;
-  font-size: 21px;
-  line-height: 1.4;
+.header-inner,.hero,.main-inner{
+  width:min(100%,760px);
+  margin-inline:auto;
+  position:relative;
+  z-index:1;
 }
-
-.brand p {
-  margin: 0;
-  font-size: 11px;
+.prophet-banner{
+  display:table;
+  margin:0 auto 14px;
+  border:1px solid #e9bd6270;
+  border-radius:30px;
+  color:var(--gold);
+  padding:3px 13px;
+  font-size:12px;
+  font-weight:bold;
 }
-
-.contact-link {
-  display: inline-block;
-  flex-shrink: 0;
-  background: var(--gold);
-  color: var(--green);
-  text-decoration: none;
-  border-radius: 18px;
-  padding: 5px 8px;
-  font-size: 11px;
-  font-weight: bold;
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
-
-header > p {
-  margin: 2px 0 0;
-  font-size: 12px;
+.brand{min-width:0}
+.brand h1{
+  margin:0;
+  font-size:clamp(23px,5vw,31px);
+  font-weight:900;
+  line-height:1.45;
 }
-
-main {
-  max-width: 760px;
-  margin: auto;
-  padding: 8px 10px;
+.brand p{margin:2px 0 0;color:#d8e8df;font-size:12px}
+.contact-link{
+  display:inline-flex;
+  flex-shrink:0;
+  align-items:center;
+  justify-content:center;
+  padding:9px 12px;
+  border-radius:25px;
+  background:var(--gold);
+  color:#173b30;
+  font-size:12px;
+  font-weight:bold;
+  text-decoration:none;
 }
-
-.panel {
-  background: #fff;
-  padding: 12px;
-  border-radius: 12px;
-  margin: 8px 0;
-  box-shadow: 0 2px 8px #123c3510;
+.hero{margin-top:25px}
+.hero h2{
+  color:#fff;
+  border:0;
+  padding:0;
+  margin:0 0 7px;
+  font-size:23px;
+  line-height:1.6;
 }
-
-h2 {
-  color: var(--green);
-  font-size: 17px;
-  margin: 0 0 8px;
+.hero p{margin:0;color:#e0eee6;font-size:13px}
+.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.hero-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:43px;
+  padding:9px 15px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:13px;
 }
-
-/* إصلاح ألوان الكتابة في جميع الخانات */
-input,
-select,
-textarea,
-button {
-  font-family: Tahoma, Arial, sans-serif !important;
+.hero-primary{background:var(--gold);color:#173b30}
+.hero-secondary{border:1px solid #ffffff50;color:white}
+main{padding:0 0 16px}
+.main-inner{
+  padding:0 12px;
+  margin-top:16px;
 }
-
-input,
-select,
-textarea {
-  display: block;
-  width: 100%;
-  padding: 11px;
-  margin: 6px 0;
-  border: 1px solid #cbd8d1;
-  border-radius: 8px;
-  font-size: 15px !important;
-  background-color: #fff !important;
-  color: #20342e !important;
-  -webkit-text-fill-color: #20342e !important;
-  caret-color: #123c35 !important;
-  opacity: 1 !important;
-  box-shadow: none;
+.quick-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+  margin-bottom:14px;
 }
-
-input::placeholder,
-textarea::placeholder {
-  color: #66756d !important;
-  -webkit-text-fill-color: #66756d !important;
-  opacity: 1 !important;
+.stat{
+  text-align:center;
+  padding:12px 5px;
+  background:#fff;
+  border:1px solid #e3ece5;
+  border-radius:13px;
+  box-shadow:0 3px 12px #103b3207;
 }
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid var(--gold) !important;
-  outline-offset: 1px;
-  background-color: #fff !important;
-  color: #20342e !important;
-  -webkit-text-fill-color: #20342e !important;
+.stat strong{display:block;color:var(--green);font-size:13px}
+.stat span{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.panel{
+  padding:17px;
+  background:#fff;
+  border:1px solid #e3ece5;
+  border-radius:17px;
+  margin:13px 0;
+  box-shadow:var(--shadow);
 }
-
-textarea {
-  min-height: 90px;
-  resize: vertical;
+.panel-heading{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
 }
-
-button,
-.whatsapp {
-  display: inline-block;
-  border: 0;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
+.heading-icon{
+  width:39px;
+  height:39px;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--mint);
+  font-size:19px;
 }
-
-button {
-  width: 100%;
-  background: var(--green);
-  color: #fff;
-  margin-top: 6px;
+h2.section-title{
+  color:var(--green);
+  border:0;
+  padding:0;
+  margin:0;
+  font-size:17px;
+  font-weight:900;
 }
-
-button:disabled {
-  opacity: .6;
-  cursor: wait;
+.heading-subtitle{font-size:11px;color:var(--muted);margin-top:1px}
+label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin:10px 0 4px;
+  color:#344d42;
 }
-
-.whatsapp {
-  background: #16864a;
-  color: #fff;
-  margin-top: 6px;
+input,select,textarea{
+  display:block;
+  width:100%;
+  min-width:0;
+  padding:12px 13px;
+  margin:0;
+  border:1px solid #d5e1d9;
+  border-radius:10px;
+  background:#fbfdfb !important;
+  color:var(--text) !important;
+  -webkit-text-fill-color:var(--text) !important;
+  caret-color:var(--green) !important;
+  opacity:1 !important;
+  font-size:15px !important;
+  line-height:1.6;
+  box-shadow:none;
 }
-
-.report {
-  background: #fff1f0;
-  color: var(--red);
-  border: 1px solid #e7b8b5;
-  margin-top: 6px;
+input::placeholder,textarea::placeholder{
+  color:#75847b !important;
+  -webkit-text-fill-color:#75847b !important;
+  opacity:1 !important;
 }
-
-.job {
-  border: 1px solid #dce8e1;
-  border-right: 4px solid var(--gold);
-  border-radius: 9px;
-  padding: 10px;
-  margin: 8px 0;
-  overflow-wrap: anywhere;
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--green);
+  box-shadow:0 0 0 3px #103b3210;
+  background:#fff !important;
 }
-
-.job h3 {
-  margin: 0 0 4px;
-  color: var(--green);
-  font-size: 16px;
+textarea{min-height:105px;resize:vertical}
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
-
-.job p {
-  margin: 3px 0;
-  font-size: 13px;
+button,.action-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  min-height:44px;
+  border:0;
+  border-radius:10px;
+  padding:11px 14px;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  cursor:pointer;
 }
-
-.job-meta {
-  font-size: 11px !important;
-  color: #52645b;
+button.primary{
+  width:100%;
+  margin-top:13px;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  box-shadow:0 4px 12px #103b321a;
 }
-
-.notice {
-  font-size: 11px;
-  color: #52645b;
-  margin: 6px 0 0;
+button:disabled{opacity:.6;cursor:wait}
+.notice{
+  margin:9px 0 0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.9;
 }
-
-#status,
-#adminStatus,
-#reportModalStatus {
-  margin-top: 8px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 12px;
+.status-message{
+  display:none;
+  padding:11px 12px;
+  margin-top:12px;
+  border-radius:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font-size:12px;
+  line-height:1.9;
 }
-
-.error {
-  color: var(--red);
+.status-message.show{display:block}
+.status-message.success{background:#eaf7ed;color:#176638}
+.status-message.error{background:#fff0ee;color:#a52a2a}
+.status-message.info{background:#eef5fb;color:#244d70}
+.search-box{position:relative;margin-bottom:10px}
+.search-box input{padding-right:42px}
+.search-symbol{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+  font-size:16px;
 }
-
-.empty {
-  text-align: center;
-  color: #52645b;
-  font-size: 13px;
+.filters{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
 }
-
-.filters {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
+.results-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin:13px 0 8px;
 }
-
-footer {
-  text-align: center;
-  padding: 12px;
-  color: #52645b;
-  font-size: 11px;
+.results-heading strong{color:var(--green);font-size:13px}
+.count-badge{
+  display:inline-block;
+  border-radius:20px;
+  background:var(--mint);
+  color:var(--green);
+  padding:3px 9px;
+  font-size:11px;
 }
-
-/* نافذة البلاغات */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: #0009;
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+.job{
+  padding:15px;
+  margin:11px 0;
+  border:1px solid var(--line);
+  border-right:4px solid var(--gold);
+  border-radius:13px;
+  background:#fff;
+  overflow-wrap:anywhere;
+  box-shadow:0 3px 13px #103b3207;
 }
-
-.modal-backdrop.open {
-  display: flex;
+.job h3{
+  margin:0 0 9px;
+  color:var(--green);
+  font-size:17px;
+  line-height:1.6;
 }
-
-.modal-card {
-  width: min(100%, 440px);
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #fff !important;
-  color: #20342e !important;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 12px 40px #0004;
+.job-company{font-size:12px;color:#465c50;margin-bottom:8px}
+.job-tags{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.job-tag{
+  display:inline-flex;
+  align-items:center;
+  border-radius:7px;
+  background:#edf5ef;
+  color:#285443;
+  padding:4px 8px;
+  font-size:11px;
 }
-
-.modal-card h2 {
-  margin: 0 0 8px;
+.job-details{
+  margin:10px 0;
+  font-size:13px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
 }
-
-.modal-card textarea,
-#reportReason {
-  min-height: 120px;
-  background: #fff !important;
-  color: #20342e !important;
-  -webkit-text-fill-color: #20342e !important;
-  caret-color: #123c35 !important;
-  font-size: 16px !important;
+.job-meta{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:7px;
 }
-
-.modal-actions {
-  display: flex;
-  gap: 8px;
+.job-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.job-actions a,.job-actions button{margin:0;width:auto;min-height:39px}
+.whatsapp{background:#16864a;color:#fff}
+.report{
+  background:#fff4f1;
+  border:1px solid #efd4cd;
+  color:var(--red);
 }
-
-.modal-actions button {
-  flex: 1;
-  width: auto;
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:23px 12px;
+  background:#f8faf8;
+  border:1px dashed #d6e3da;
+  border-radius:12px;
+  font-size:12px;
 }
-
-.modal-actions .secondary {
-  background: #e8eee9;
-  color: #20342e;
+.admin-panel{border-color:#e0e5e1}
+.admin-list{margin-top:12px}
+.report-item{
+  padding:12px;
+  margin:9px 0;
+  border:1px solid var(--line);
+  border-radius:11px;
+  overflow-wrap:anywhere;
 }
-
-.admin-list {
-  margin-top: 12px;
+.report-item p{margin:6px 0;font-size:12px}
+.report-item button{width:100%;margin-top:8px}
+.secondary{
+  background:#e9efeb;
+  color:var(--text);
 }
-
-.report-item {
-  border: 1px solid #dce8e1;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 8px 0;
-  overflow-wrap: anywhere;
+.admin-hidden{display:none !important}
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  background:#061b16c9;
+  backdrop-filter:blur(3px);
 }
-
-.report-item p {
-  margin: 4px 0;
+.modal-backdrop.open{display:flex}
+.modal-card{
+  width:min(100%,440px);
+  max-height:90dvh;
+  overflow:auto;
+  padding:18px;
+  border-radius:17px;
+  background:#fff;
+  color:var(--text);
+  box-shadow:0 15px 50px #0003;
 }
-
-.admin-hidden {
-  display: none !important;
+.modal-card h2{margin:0 0 8px}
+.modal-actions{display:flex;gap:8px;margin-top:10px}
+.modal-actions button{flex:1}
+footer{
+  text-align:center;
+  padding:22px 14px calc(22px + env(safe-area-inset-bottom));
+  color:var(--muted);
+  font-size:11px;
 }
-
-@media (max-width: 480px) {
-  .filters {
-    grid-template-columns: 1fr;
-  }
-
-  .panel {
-    padding: 10px;
-  }
-
-  .brand h1 {
-    font-size: 19px;
-  }
+footer strong{color:var(--green)}
+@media(max-width:480px){
+  header{padding:14px 12px 24px}
+  .header-top{gap:8px}
+  .brand h1{font-size:22px}
+  .contact-link{padding:8px 9px;font-size:10px}
+  .hero{margin-top:20px}
+  .hero h2{font-size:20px}
+  .main-inner{padding:0 9px;margin-top:12px}
+  .panel{padding:13px;border-radius:14px}
+  .field-row,.filters{grid-template-columns:1fr}
+  .quick-stats{gap:6px}
+  .stat{padding:10px 3px}
+  .stat strong{font-size:12px}
+  .stat span{font-size:9px}
+  .job{padding:12px}
+  .job-actions a,.job-actions button{flex:1}
+  .modal-actions{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <div class="prophet-banner">صَلِّ عَلَى النَّبِي ﷺ</div>
-
-  <div class="header-top">
-    <div class="brand">
-      <h1>شغل الدقهلية</h1>
-      <p>منصة الوظائف الحقيقية</p>
+  <div class="header-inner">
+    <div class="prophet-banner">صَلِّ عَلَى النَّبِي ﷺ</div>
+    <div class="header-top">
+      <div class="brand">
+        <h1>شغل الدقهلية</h1>
+        <p>منصة الوظائف الحقيقية</p>
+      </div>
+      <a class="contact-link"
+         href="https://wa.me/201067046324?text=السلام%20عليكم،%20أتواصل%20معكم%20من%20تطبيق%20شغل%20الدقهلية"
+         target="_blank" rel="noopener noreferrer">💬 تواصل معنا</a>
     </div>
-
-    <a class="contact-link"
-       href="https://wa.me/201067046324?text=السلام%20عليكم،%20أتواصل%20معكم%20من%20تطبيق%20شغل%20الدقهلية"
-       target="_blank"
-       rel="noopener noreferrer">💬 تواصل معنا</a>
+    <div class="hero">
+      <h2>فرصتك للشغل أقرب ليك 💼</h2>
+      <p>بتدور على وظيفة؟ أو محتاج موظفين لشركتك؟<br>اجمع فرصك وطلبات التوظيف في مكان واحد.</p>
+      <div class="hero-actions">
+        <a class="hero-primary" href="#jobForm">➕ أضف وظيفة</a>
+        <a class="hero-secondary" href="#jobsSection">🔎 شوف الوظائف</a>
+      </div>
+    </div>
   </div>
-
-  <p>فرص عمل في المنصورة والمناطق المحيطة</p>
 </header>
 
 <main>
+<div class="main-inner">
 
-<section class="panel">
-  <h2>➕ أضف وظيفة</h2>
-
-  <form id="jobForm">
-    <input id="title" maxlength="100"
-      placeholder="المسمى الوظيفي *" required>
-
-    <input id="company" maxlength="100"
-      placeholder="اسم الشركة أو صاحب العمل *" required>
-
-    <select id="area" required>
-      <option value="">اختر المنطقة *</option>
-      <option>المنصورة</option>
-      <option>أويش الحجر</option>
-      <option>البدالة</option>
-      <option>البرامون</option>
-      <option>البقلية</option>
-      <option>برق العز</option>
-      <option>بدواي</option>
-      <option>شها</option>
-      <option>طناح</option>
-      <option>ميت بدر خميس</option>
-      <option>ميت مزاح</option>
-      <option>محلة الدمنة</option>
-    </select>
-
-    <input id="salary" maxlength="100"
-      placeholder="الراتب (اختياري)">
-
-    <textarea id="details" maxlength="1500"
-      placeholder="تفاصيل الوظيفة وشروطها"></textarea>
-
-    <input id="phone" type="tel" inputmode="tel"
-      maxlength="20"
-      placeholder="رقم واتساب صاحب الوظيفة *" required>
-
-    <button id="submitBtn" type="submit">نشر الوظيفة</button>
-
-    <p class="notice">
-      ستظهر الوظيفة بعد مراجعتها والموافقة عليها.
-      مدة الإعلان 30 يومًا من وقت الإرسال.
-      لا تنشر رقم شخص آخر دون إذنه.
-    </p>
-  </form>
-
-  <div id="status" role="status" aria-live="polite"></div>
-</section>
-
-<section class="panel">
-  <h2>📋 الوظائف المتاحة</h2>
-
-  <div class="filters">
-    <input id="search" placeholder="ابحث عن وظيفة أو شركة">
-
-    <select id="filterArea">
-      <option value="">كل المناطق</option>
-      <option>المنصورة</option>
-      <option>أويش الحجر</option>
-      <option>البدالة</option>
-      <option>البرامون</option>
-      <option>البقلية</option>
-      <option>برق العز</option>
-      <option>بدواي</option>
-      <option>شها</option>
-      <option>طناح</option>
-      <option>ميت بدر خميس</option>
-      <option>ميت مزاح</option>
-      <option>محلة الدمنة</option>
-    </select>
+  <div class="quick-stats" aria-label="مميزات المنصة">
+    <div class="stat"><strong>📍 الدقهلية</strong><span>وظائف محلية</span></div>
+    <div class="stat"><strong>💬 واتساب</strong><span>تواصل مباشر</span></div>
+    <div class="stat"><strong>🛡️ مراجعة</strong><span>قبل النشر</span></div>
   </div>
 
-  <div id="jobs">
-    <p class="empty">جاري تحميل الوظائف...</p>
-  </div>
-</section>
-
-<section class="panel" id="adminPanel">
-  <h2>🔐 إدارة البلاغات</h2>
-
-  <p class="notice">
-    هذه المنطقة مخصصة للإدارة فقط.
-    سجّل الدخول ببريد الإدارة وكلمة المرور التي أنشأتها في Firebase.
-  </p>
-
-  <form id="adminLoginForm">
-    <input id="adminEmail" type="email"
-      autocomplete="username"
-      value="medosalama650@gmail.com"
-      placeholder="بريد الإدارة" required>
-
-    <input id="adminPassword" type="password"
-      autocomplete="current-password"
-      placeholder="كلمة مرور الإدارة" required>
-
-    <button id="adminLoginBtn" type="submit">دخول الإدارة</button>
-  </form>
-
-  <div id="adminStatus" role="status" aria-live="polite"></div>
-
-  <div id="adminContent" class="admin-hidden">
-    <button id="adminLogoutBtn" type="button">تسجيل الخروج</button>
-
-    <div id="reportsList" class="admin-list">
-      <p class="empty">جاري تحميل البلاغات...</p>
+  <section class="panel" id="addJobSection">
+    <div class="panel-heading">
+      <div class="heading-icon">➕</div>
+      <div>
+        <h2 class="section-title">أضف وظيفة جديدة</h2>
+        <div class="heading-subtitle">ساعد الناس تلاقي فرصة عمل مناسبة</div>
+      </div>
     </div>
-  </div>
-</section>
 
+    <form id="jobForm">
+      <label for="title">المسمى الوظيفي *</label>
+      <input id="title" maxlength="100" placeholder="مثال: كاشير، محاسب، عامل إنتاج" required>
+
+      <label for="company">اسم الشركة أو صاحب العمل *</label>
+      <input id="company" maxlength="100" placeholder="اكتب اسم الشركة أو المحل" required>
+
+      <div class="field-row">
+        <div>
+          <label for="area">منطقة العمل *</label>
+          <select id="area" required>
+            <option value="">اختر المنطقة</option>
+            <option>المنصورة</option>
+            <option>أويش الحجر</option>
+            <option>البدالة</option>
+            <option>البرامون</option>
+            <option>البقلية</option>
+            <option>برق العز</option>
+            <option>بدواي</option>
+            <option>شها</option>
+            <option>طناح</option>
+            <option>ميت بدر خميس</option>
+            <option>ميت مزاح</option>
+            <option>محلة الدمنة</option>
+          </select>
+        </div>
+        <div>
+          <label for="salary">الراتب</label>
+          <input id="salary" maxlength="100" placeholder="مثال: 6000 جنيه">
+        </div>
+      </div>
+
+      <label for="details">تفاصيل الوظيفة وشروطها</label>
+      <textarea id="details" maxlength="1500" placeholder="اكتب مواعيد العمل والخبرة المطلوبة وأي تفاصيل مهمة..."></textarea>
+
+      <label for="phone">رقم واتساب صاحب الوظيفة *</label>
+      <input id="phone" type="tel" inputmode="tel" autocomplete="tel"
+             maxlength="20" placeholder="مثال: 01012345678" required>
+
+      <button class="primary" id="submitBtn" type="submit">📨 إرسال الوظيفة للمراجعة</button>
+
+      <p class="notice">ستظهر الوظيفة بعد مراجعتها والموافقة عليها. مدة الإعلان 30 يومًا. تأكد من صحة البيانات ولا تستخدم رقم شخص آخر دون إذنه.</p>
+      <div id="status" class="status-message" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="panel" id="jobsSection">
+    <div class="panel-heading">
+      <div class="heading-icon">💼</div>
+      <div>
+        <h2 class="section-title">الوظائف المتاحة</h2>
+        <div class="heading-subtitle">ابحث عن الفرصة المناسبة ليك</div>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <span class="search-symbol">🔎</span>
+      <input id="search" type="search" placeholder="ابحث عن وظيفة أو شركة..." aria-label="البحث عن وظيفة">
+    </div>
+
+    <div class="filters">
+      <select id="filterArea" aria-label="تصفية حسب المنطقة">
+        <option value="">📍 كل المناطق</option>
+        <option>المنصورة</option>
+        <option>أويش الحجر</option>
+        <option>البدالة</option>
+        <option>البرامون</option>
+        <option>البقلية</option>
+        <option>برق العز</option>
+        <option>بدواي</option>
+        <option>شها</option>
+        <option>طناح</option>
+        <option>ميت بدر خميس</option>
+        <option>ميت مزاح</option>
+        <option>محلة الدمنة</option>
+      </select>
+      <select id="sortJobs" aria-label="ترتيب الوظائف">
+        <option value="newest">الأحدث أولًا</option>
+        <option value="oldest">الأقدم أولًا</option>
+      </select>
+    </div>
+
+    <div class="results-heading">
+      <strong>نتائج البحث</strong>
+      <span id="jobCount" class="count-badge">0 وظيفة</span>
+    </div>
+
+    <div id="jobs" aria-live="polite">
+      <p class="empty">جاري تحميل الوظائف...</p>
+    </div>
+  </section>
+
+  <section class="panel admin-panel" id="adminPanel">
+    <div class="panel-heading">
+      <div class="heading-icon">🔐</div>
+      <div>
+        <h2 class="section-title">لوحة إدارة البلاغات</h2>
+        <div class="heading-subtitle">دخول مخصص لحساب الإدارة</div>
+      </div>
+    </div>
+
+    <form id="adminLoginForm">
+      <label for="adminEmail">بريد الإدارة</label>
+      <input id="adminEmail" type="email" autocomplete="username"
+             value="medosalama650@gmail.com" required>
+
+      <label for="adminPassword">كلمة المرور</label>
+      <input id="adminPassword" type="password"
+             autocomplete="current-password" required>
+
+      <button class="primary" id="adminLoginBtn" type="submit">🔑 دخول الإدارة</button>
+    </form>
+
+    <div id="adminStatus" class="status-message" role="status" aria-live="polite"></div>
+
+    <div id="adminContent" class="admin-hidden">
+      <button id="adminLogoutBtn" class="secondary" type="button">تسجيل الخروج</button>
+      <div id="reportsList" class="admin-list">
+        <p class="empty">جاري تحميل البلاغات...</p>
+      </div>
+    </div>
+  </section>
+</div>
 </main>
 
 <div id="reportModal" class="modal-backdrop"
-  role="dialog" aria-modal="true"
-  aria-labelledby="reportModalTitle">
-
+     role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
   <div class="modal-card">
-    <h2 id="reportModalTitle">🚨 الإبلاغ عن الإعلان</h2>
-
+    <h2 class="section-title" id="reportModalTitle">🚨 الإبلاغ عن إعلان</h2>
     <p id="reportModalJob" class="notice"></p>
 
-    <label for="reportReason">اكتب سبب البلاغ:</label>
-
+    <label for="reportReason">سبب البلاغ *</label>
     <textarea id="reportReason" maxlength="500"
-      placeholder="مثال: رقم غير صحيح أو إعلان مضلل"></textarea>
+              placeholder="اكتب سبب البلاغ بوضوح..." required></textarea>
 
     <div class="modal-actions">
-      <button id="sendReportBtn" type="button">إرسال البلاغ</button>
-      <button id="cancelReportBtn" class="secondary"
-        type="button">إلغاء</button>
+      <button id="sendReportBtn" class="primary" type="button">إرسال البلاغ</button>
+      <button id="cancelReportBtn" class="secondary" type="button">إلغاء</button>
     </div>
-
-    <div id="reportModalStatus" class="notice"
-      role="status" aria-live="polite"></div>
+    <div id="reportModalStatus" class="status-message" role="status" aria-live="polite"></div>
   </div>
 </div>
 
-<footer>شغل الدقهلية © منصة محلية لعرض فرص العمل</footer>
+<footer>
+  <strong>شغل الدقهلية</strong><br>
+  منصة محلية لعرض فرص العمل في الدقهلية<br>
+  © جميع الحقوق محفوظة
+</footer>
 
 <script type="module">
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
   getAuth,
   signInAnonymously,
@@ -521,7 +625,6 @@ import {
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-
 import {
   getFirestore,
   collection,
@@ -546,14 +649,43 @@ const firebaseConfig = {
   measurementId: "G-2ZKG5V6ESQ"
 };
 
+const ADMIN_EMAIL = "medosalama650@gmail.com";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const $ = id => document.getElementById(id);
 
-function showStatus(message, isError = false) {
-  $("status").textContent = message;
-  $("status").className = isError ? "error" : "";
+let allJobs = [];
+let selectedReportJob = null;
+let unsubscribeJobs = null;
+let unsubscribeReports = null;
+let appStarting = false;
+let authReady = false;
+let authPromise = null;
+let authPromiseResolve = null;
+let lastReportClick = 0;
+
+function setMessage(id, message, type = "info") {
+  const el = $(id);
+  el.textContent = message;
+  el.className = "status-message show " + type;
+}
+
+function clearMessage(id) {
+  const el = $(id);
+  el.textContent = "";
+  el.className = "status-message";
+}
+
+function errorCode(error) {
+  return error?.code || error?.message || "unknown";
+}
+
+function makeElement(tag, text, className = "") {
+  const el = document.createElement(tag);
+  el.textContent = text == null ? "" : String(text);
+  if (className) el.className = className;
+  return el;
 }
 
 function cleanPhone(value) {
@@ -562,84 +694,86 @@ function cleanPhone(value) {
 
 function whatsappNumber(value) {
   let number = cleanPhone(value);
-
-  if (number.startsWith("0")) {
-    number = "20" + number.substring(1);
-  }
-
+  if (number.startsWith("00")) number = number.slice(2);
+  if (number.startsWith("0")) number = "20" + number.slice(1);
+  if (number.length === 10 && number.startsWith("1")) number = "20" + number;
   return number;
 }
 
-function makeElement(tag, text, className = "") {
-  const node = document.createElement(tag);
-  node.textContent = text || "";
-
-  if (className) node.className = className;
-
-  return node;
+function validEgyptianPhone(value) {
+  const number = whatsappNumber(value);
+  return /^20\d{10}$/.test(number);
 }
 
 function toDate(value) {
-  if (value && typeof value.toDate === "function") {
-    return value.toDate();
-  }
-
+  if (value && typeof value.toDate === "function") return value.toDate();
   if (value instanceof Date) return value;
-
   if (typeof value === "number") return new Date(value);
-
-  return null;
-}
-
-function expiryDate(job) {
-  const explicit = toDate(job.expiresAt);
-
-  if (explicit) return explicit;
-
-  const created = toDate(job.createdAt);
-
-  if (created) {
-    return new Date(created.getTime() + 30 * 24 * 60 * 60 * 1000);
+  if (typeof value === "string") {
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
   }
-
   return null;
 }
 
 function dateText(value) {
   const date = toDate(value);
-
-  return date ? date.toLocaleDateString("ar-EG") : "غير متاح";
+  return date
+    ? date.toLocaleDateString("ar-EG", {
+        year: "numeric", month: "short", day: "numeric"
+      })
+    : "غير متاح";
 }
 
-let allJobs = [];
-let selectedReportJob = null;
-let unsubscribeReports = null;
+function expiryDate(job) {
+  const explicit = toDate(job.expiresAt);
+  if (explicit) return explicit;
 
-function renderJobs(jobs) {
+  const created = toDate(job.createdAt);
+  return created
+    ? new Date(created.getTime() + 30 * 86400000)
+    : null;
+}
+
+function escapeSearch(value) {
+  return String(value || "").trim().toLocaleLowerCase("ar");
+}
+
+function renderJobs() {
   const box = $("jobs");
   box.replaceChildren();
 
-  const now = Date.now();
-  const term = $("search").value.trim().toLowerCase();
+  const term = escapeSearch($("search").value);
   const area = $("filterArea").value;
+  const sort = $("sortJobs").value;
+  const now = Date.now();
 
-  const filtered = jobs.filter(job => {
+  const filtered = allJobs.filter(job => {
     const expiry = expiryDate(job);
-
     if (expiry && expiry.getTime() <= now) return false;
 
-    const text =
-      `${job.title || ""} ${job.company || ""} ${job.details || ""}`
-      .toLowerCase();
+    const text = escapeSearch(
+      [job.title, job.company, job.details, job.area, job.salary].join(" ")
+    );
 
     return (!term || text.includes(term)) &&
       (!area || job.area === area);
   });
 
+  filtered.sort((a, b) => {
+    const da = toDate(a.createdAt)?.getTime() || 0;
+    const db = toDate(b.createdAt)?.getTime() || 0;
+    return sort === "oldest" ? da - db : db - da;
+  });
+
+  $("jobCount").textContent = filtered.length + " وظيفة";
+
   if (!filtered.length) {
     box.append(makeElement(
       "p",
-      "لا توجد وظائف متاحة تطابق بحثك حاليًا.",
+      allJobs.length
+        ? "لا توجد وظائف تطابق بحثك حاليًا. جرّب منطقة أو كلمة أخرى."
+        : "لا توجد وظائف معتمدة حاليًا. تابعنا لمعرفة الفرص الجديدة.",
       "empty"
     ));
     return;
@@ -649,69 +783,77 @@ function renderJobs(jobs) {
     const card = document.createElement("article");
     card.className = "job";
 
-    card.append(makeElement("h3", job.title || "وظيفة"));
-    card.append(makeElement("p", "الشركة: " + (job.company || "غير محدد")));
-    card.append(makeElement("p", "المنطقة: " + (job.area || "غير محددة")));
-    card.append(makeElement("p", "الراتب: " + (job.salary || "يحدد عند المقابلة")));
+    card.append(makeElement("h3", job.title || "وظيفة شاغرة"));
+    card.append(makeElement(
+      "div",
+      "🏢 " + (job.company || "جهة العمل غير محددة"),
+      "job-company"
+    ));
+
+    const tags = document.createElement("div");
+    tags.className = "job-tags";
+    tags.append(makeElement("span", "📍 " + (job.area || "غير محددة"), "job-tag"));
+    tags.append(makeElement(
+      "span",
+      "💰 " + (job.salary || "يحدد عند المقابلة"),
+      "job-tag"
+    ));
+    card.append(tags);
 
     if (job.details) {
-      card.append(makeElement("p", "التفاصيل: " + job.details));
+      card.append(makeElement("div", job.details, "job-details"));
     }
 
     card.append(makeElement(
-      "p",
-      "تاريخ النشر: " + dateText(job.createdAt),
-      "job-meta"
+      "div", "تاريخ النشر: " + dateText(job.createdAt), "job-meta"
     ));
 
     const expiry = expiryDate(job);
+    if (expiry) {
+      card.append(makeElement(
+        "div", "ينتهي الإعلان: " + dateText(expiry), "job-meta"
+      ));
+    }
 
-    card.append(makeElement(
-      "p",
-      "ينتهي الإعلان: " + (expiry ? dateText(expiry) : "بعد 30 يومًا من تاريخ النشر"),
-      "job-meta"
-    ));
+    const actions = document.createElement("div");
+    actions.className = "job-actions";
 
-    const phone = whatsappNumber(job.phone);
-
-    if (phone) {
+    if (validEgyptianPhone(job.phone)) {
       const link = document.createElement("a");
-      link.className = "whatsapp";
-      link.target = "_self";
-      link.rel = "noopener";
-      link.href = "https://api.whatsapp.com/send?phone=" + phone;
-      link.textContent = "التقديم عبر واتساب";
-      card.append(link);
+      link.className = "whatsapp action-link";
+      link.href = "https://api.whatsapp.com/send?phone=" +
+        encodeURIComponent(whatsappNumber(job.phone));
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "💬 التقديم عبر واتساب";
+      actions.append(link);
     }
 
     const report = document.createElement("button");
     report.type = "button";
     report.className = "report";
-    report.textContent = "🚨 إبلاغ عن الإعلان";
-    report.addEventListener("click", () => reportJob(job));
+    report.textContent = "🚨 إبلاغ";
+    report.addEventListener("click", () => openReport(job));
+    actions.append(report);
 
-    card.append(report);
+    card.append(actions);
     box.append(card);
   });
 }
 
-function reportJob(job) {
+function openReport(job) {
   selectedReportJob = job;
-
-  $("reportModalJob").textContent =
-    "الإعلان: " + (job.title || "وظيفة");
-
+  $("reportModalJob").textContent = "الإعلان: " + (job.title || "وظيفة");
   $("reportReason").value = "";
-  $("reportModalStatus").textContent = "";
+  clearMessage("reportModalStatus");
   $("sendReportBtn").disabled = false;
   $("sendReportBtn").textContent = "إرسال البلاغ";
-
   $("reportModal").classList.add("open");
-
-  setTimeout(() => $("reportReason").focus(), 100);
+  $("reportReason").focus();
 }
 
 function closeReportModal() {
+  if ($("sendReportBtn").disabled) return;
   $("reportModal").classList.remove("open");
   selectedReportJob = null;
 }
@@ -719,8 +861,59 @@ function closeReportModal() {
 $("cancelReportBtn").addEventListener("click", closeReportModal);
 
 $("reportModal").addEventListener("click", event => {
-  if (event.target === $("reportModal")) {
-    closeReportModal();
+  if (event.target === $("reportModal")) closeReportModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !$("sendReportBtn").disabled) {
+    $("reportModal").classList.remove("open");
+    selectedReportJob = null;
+  }
+});
+
+async function ensureAnonymousUser() {
+  if (auth.currentUser) {
+    if (auth.currentUser.isAnonymous) return auth.currentUser;
+    throw new Error("admin-session-active");
+  }
+
+  if (authPromise) return authPromise;
+
+  authPromise = new Promise((resolve, reject) => {
+    authPromiseResolve = resolve;
+
+    signInAnonymously(auth).catch(error => {
+      authPromise = null;
+      authPromiseResolve = null;
+      reject(error);
+    });
+  });
+
+  return authPromise;
+}
+
+onAuthStateChanged(auth, user => {
+  authReady = true;
+
+  if (user && user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+    showAdminContent(true);
+    setMessage("adminStatus", "تم تسجيل الدخول للإدارة.", "success");
+  } else {
+    showAdminContent(false);
+    if (unsubscribeReports) {
+      unsubscribeReports();
+      unsubscribeReports = null;
+    }
+  }
+
+  if (authPromiseResolve && user?.isAnonymous) {
+    authPromiseResolve(user);
+    authPromiseResolve = null;
+    authPromise = null;
+  }
+
+  if (user && user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+    loadAdminReports();
   }
 });
 
@@ -730,50 +923,54 @@ $("sendReportBtn").addEventListener("click", async () => {
   if (!selectedReportJob) return;
 
   if (!reason) {
-    $("reportModalStatus").textContent = "اكتب سبب البلاغ أولًا.";
+    setMessage("reportModalStatus", "اكتب سبب البلاغ أولًا.", "error");
     return;
   }
+
+  const now = Date.now();
+  if (now - lastReportClick < 1200) return;
+  lastReportClick = now;
 
   const btn = $("sendReportBtn");
   btn.disabled = true;
   btn.textContent = "جاري الإرسال...";
+  clearMessage("reportModalStatus");
 
   try {
-    if (!auth.currentUser) {
-      await signInAnonymously(auth);
-    }
+    await ensureAnonymousUser();
 
     await addDoc(collection(db, "reports"), {
-      jobId: selectedReportJob.id,
-      jobTitle: selectedReportJob.title || "",
+      jobId: String(selectedReportJob.id || ""),
+      jobTitle: String(selectedReportJob.title || "").slice(0, 100),
       reason: reason.slice(0, 500),
       status: "new",
       createdAt: serverTimestamp()
     });
 
-    $("reportModalStatus").textContent =
-      "تم إرسال البلاغ بنجاح، شكرًا لمساعدتك ❤️";
+    setMessage(
+      "reportModalStatus",
+      "تم إرسال البلاغ بنجاح. شكرًا لمساعدتك ❤️",
+      "success"
+    );
 
-    setTimeout(closeReportModal, 1200);
+    setTimeout(() => {
+      $("reportModal").classList.remove("open");
+      selectedReportJob = null;
+      btn.disabled = false;
+      btn.textContent = "إرسال البلاغ";
+    }, 1300);
 
   } catch (error) {
     console.error("Report submit error:", error);
-
-    $("reportModalStatus").textContent =
-      "لم يتم إرسال البلاغ. رمز الخطأ: " +
-      (error.code || error.message);
-
+    setMessage(
+      "reportModalStatus",
+      "تعذر إرسال البلاغ. رمز الخطأ: " + errorCode(error),
+      "error"
+    );
     btn.disabled = false;
     btn.textContent = "إرسال البلاغ";
   }
 });
-
-const ADMIN_EMAIL = "medosalama650@gmail.com";
-
-function adminMessage(message, isError = false) {
-  $("adminStatus").textContent = message;
-  $("adminStatus").className = isError ? "error" : "notice";
-}
 
 function showAdminContent(show) {
   $("adminContent").classList.toggle("admin-hidden", !show);
@@ -781,92 +978,83 @@ function showAdminContent(show) {
 }
 
 function loadAdminReports() {
-  if (unsubscribeReports) unsubscribeReports();
+  const user = auth.currentUser;
+  if (!user || user.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) return;
+  if (unsubscribeReports) return;
 
   const reportsQuery = query(
     collection(db, "reports"),
     orderBy("createdAt", "desc")
   );
 
-  unsubscribeReports = onSnapshot(
-    reportsQuery,
-    snapshot => {
-      const list = $("reportsList");
-      list.replaceChildren();
+  unsubscribeReports = onSnapshot(reportsQuery, snapshot => {
+    const list = $("reportsList");
+    list.replaceChildren();
 
-      if (snapshot.empty) {
-        list.append(makeElement(
-          "p",
-          "لا توجد بلاغات حتى الآن.",
-          "empty"
-        ));
-        return;
+    if (snapshot.empty) {
+      list.append(makeElement("p", "لا توجد بلاغات حتى الآن.", "empty"));
+      return;
+    }
+
+    snapshot.forEach(item => {
+      const report = item.data();
+      const card = document.createElement("article");
+      card.className = "report-item";
+
+      card.append(makeElement(
+        "strong", report.jobTitle || "إعلان بدون عنوان"
+      ));
+      card.append(makeElement(
+        "p", "سبب البلاغ: " + (report.reason || "غير مذكور")
+      ));
+      card.append(makeElement(
+        "p", "الحالة: " +
+        (report.status === "reviewed" ? "تمت المراجعة" : "جديد")
+      ));
+      card.append(makeElement(
+        "p", "تاريخ البلاغ: " + dateText(report.createdAt)
+      ));
+      card.append(makeElement(
+        "p", "رقم الإعلان: " + (report.jobId || "غير متاح")
+      ));
+
+      if (report.status !== "reviewed") {
+        const btn = makeElement("button", "تمت المراجعة");
+        btn.type = "button";
+        btn.className = "primary";
+
+        btn.addEventListener("click", async () => {
+          btn.disabled = true;
+
+          try {
+            await updateDoc(doc(db, "reports", item.id), {
+              status: "reviewed"
+            });
+          } catch (error) {
+            setMessage(
+              "adminStatus",
+              "تعذر تحديث البلاغ. رمز الخطأ: " + errorCode(error),
+              "error"
+            );
+            btn.disabled = false;
+          }
+        });
+
+        card.append(btn);
       }
 
-      snapshot.forEach(item => {
-        const report = item.data();
-        const card = document.createElement("article");
-        card.className = "report-item";
-
-        card.append(makeElement(
-          "strong",
-          report.jobTitle || "إعلان بدون عنوان"
-        ));
-
-        card.append(makeElement(
-          "p",
-          "سبب البلاغ: " + (report.reason || "غير مذكور")
-        ));
-
-        card.append(makeElement(
-          "p",
-          "الحالة: " +
-          (report.status === "reviewed" ? "تمت المراجعة" : "جديد")
-        ));
-
-        card.append(makeElement(
-          "p",
-          "رقم الإعلان: " + (report.jobId || "غير متاح")
-        ));
-
-        if (report.status !== "reviewed") {
-          const btn = makeElement("button", "تمت المراجعة");
-          btn.type = "button";
-
-          btn.addEventListener("click", async () => {
-            btn.disabled = true;
-
-            try {
-              await updateDoc(doc(db, "reports", item.id), {
-                status: "reviewed"
-              });
-            } catch (error) {
-              adminMessage(
-                "تعذر تحديث البلاغ: " +
-                (error.code || error.message),
-                true
-              );
-
-              btn.disabled = false;
-            }
-          });
-
-          card.append(btn);
-        }
-
-        list.append(card);
-      });
-    },
-    error => {
-      console.error("Reports load error:", error);
-
-      adminMessage(
-        "تعذر تحميل البلاغات. راجع تسجيل الدخول وصلاحيات Firebase: " +
-        (error.code || error.message),
-        true
-      );
-    }
-  );
+      list.append(card);
+    });
+  }, error => {
+    console.error("Reports load error:", error);
+    setMessage(
+      "adminStatus",
+      "تعذر تحميل البلاغات. راجع صلاحيات Firebase. رمز الخطأ: " +
+      errorCode(error),
+      "error"
+    );
+    unsubscribeReports = null;
+  });
 }
 
 $("adminLoginForm").addEventListener("submit", async event => {
@@ -875,41 +1063,41 @@ $("adminLoginForm").addEventListener("submit", async event => {
   const btn = $("adminLoginBtn");
   btn.disabled = true;
   btn.textContent = "جاري تسجيل الدخول...";
-
-  adminMessage("");
+  clearMessage("adminStatus");
 
   try {
+    const email = $("adminEmail").value.trim();
+
+    if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+      throw new Error("هذا البريد ليس بريد الإدارة المعتمد.");
+    }
+
     const credential = await signInWithEmailAndPassword(
-      auth,
-      $("adminEmail").value.trim(),
-      $("adminPassword").value
+      auth, email, $("adminPassword").value
     );
 
-    if (credential.user.email !== ADMIN_EMAIL) {
+    if (credential.user.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
       await signOut(auth);
       throw new Error("هذا الحساب ليس حساب الإدارة المعتمد.");
     }
 
     $("adminPassword").value = "";
-
-    adminMessage("تم تسجيل الدخول للإدارة.");
     showAdminContent(true);
+    setMessage("adminStatus", "تم تسجيل الدخول للإدارة.", "success");
     loadAdminReports();
 
   } catch (error) {
     console.error("Admin login error:", error);
-
-    adminMessage(
-      "تعذر الدخول. تأكد من إنشاء حساب البريد وكلمة المرور في Firebase Authentication. رمز الخطأ: " +
-      (error.code || error.message),
-      true
-    );
-
     showAdminContent(false);
-
+    setMessage(
+      "adminStatus",
+      "تعذر الدخول. تأكد من بريد الإدارة وكلمة المرور وتفعيل Email/Password في Firebase Authentication. رمز الخطأ: " +
+      errorCode(error),
+      "error"
+    );
   } finally {
     btn.disabled = false;
-    btn.textContent = "دخول الإدارة";
+    btn.textContent = "🔑 دخول الإدارة";
   }
 });
 
@@ -921,121 +1109,104 @@ $("adminLogoutBtn").addEventListener("click", async () => {
 
   try {
     await signOut(auth);
+    setMessage("adminStatus", "تم تسجيل الخروج.", "success");
   } catch (error) {
-    console.error(error);
+    setMessage(
+      "adminStatus", "تعذر تسجيل الخروج: " + errorCode(error), "error"
+    );
   }
 
   showAdminContent(false);
-  adminMessage("تم تسجيل الخروج.");
 });
 
-onAuthStateChanged(auth, user => {
-  if (user && user.email === ADMIN_EMAIL) {
-    showAdminContent(true);
-    adminMessage("تم تسجيل الدخول للإدارة.");
-    loadAdminReports();
-  } else {
-    showAdminContent(false);
-
-    if (unsubscribeReports) {
-      unsubscribeReports();
-      unsubscribeReports = null;
-    }
-  }
-});
-
-$("search").addEventListener("input", () => renderJobs(allJobs));
-
-$("filterArea").addEventListener("change", () => renderJobs(allJobs));
+$("search").addEventListener("input", renderJobs);
+$("filterArea").addEventListener("change", renderJobs);
+$("sortJobs").addEventListener("change", renderJobs);
 
 async function startApp() {
-  try {
-    await signInAnonymously(auth);
-  } catch (error) {
-    console.error("Authentication error:", error);
+  if (appStarting) return;
+  appStarting = true;
 
-    showStatus(
-      "تعذر الاتصال بحساب المستخدم. رمز الخطأ: " +
-      (error.code || error.message),
-      true
+  try {
+    await ensureAnonymousUser();
+
+    const approvedQuery = query(
+      collection(db, "jobs"),
+      where("status", "==", "approved")
     );
 
-    $("jobs").replaceChildren(makeElement(
-      "p",
-      "تعذر الاتصال بقاعدة البيانات.",
-      "empty"
-    ));
-
-    return;
-  }
-
-  const approvedQuery = query(
-    collection(db, "jobs"),
-    where("status", "==", "approved")
-  );
-
-  onSnapshot(
-    approvedQuery,
-    snapshot => {
+    unsubscribeJobs = onSnapshot(approvedQuery, snapshot => {
       allJobs = snapshot.docs.map(item => ({
         id: item.id,
         ...item.data()
       }));
-
-      renderJobs(allJobs);
-    },
-    error => {
+      renderJobs();
+    }, error => {
       console.error("Load jobs error:", error);
-
       $("jobs").replaceChildren(makeElement(
         "p",
-        "حصلت مشكلة في تحميل الوظائف. رمز الخطأ: " +
-        (error.code || error.message),
+        "تعذر تحميل الوظائف. رمز الخطأ: " + errorCode(error),
         "empty"
       ));
-    }
-  );
+    });
+
+  } catch (error) {
+    console.error("Authentication error:", error);
+    $("jobs").replaceChildren(makeElement(
+      "p",
+      "تعذر الاتصال بخدمة الوظائف. تحقق من الإنترنت وتفعيل Anonymous في Firebase Authentication. رمز الخطأ: " +
+      errorCode(error),
+      "empty"
+    ));
+  } finally {
+    appStarting = false;
+  }
 }
 
 $("jobForm").addEventListener("submit", async event => {
   event.preventDefault();
 
   const btn = $("submitBtn");
+  if (btn.disabled) return;
+
   const title = $("title").value.trim();
-  const company = $("company").value.trim() || "غير محدد";
+  const company = $("company").value.trim();
   const area = $("area").value;
   const salary = $("salary").value.trim() || "يحدد عند المقابلة";
   const details = $("details").value.trim();
-  const phone = cleanPhone($("phone").value);
+  const rawPhone = $("phone").value.trim();
 
-  if (!title || !company || !area ||
-      phone.length < 10 || phone.length > 15) {
-    showStatus("راجع اسم الوظيفة والشركة والمنطقة ورقم واتساب.", true);
+  if (!title || !company || !area || !rawPhone) {
+    setMessage("status", "يرجى إكمال الحقول المطلوبة.", "error");
+    return;
+  }
+
+  if (!validEgyptianPhone(rawPhone)) {
+    setMessage(
+      "status",
+      "اكتب رقم واتساب مصري صحيحًا، مثل 01012345678 أو 201012345678.",
+      "error"
+    );
     return;
   }
 
   btn.disabled = true;
-  btn.textContent = "جاري النشر...";
-  showStatus("");
+  btn.textContent = "جاري إرسال الوظيفة...";
+  clearMessage("status");
 
   try {
-    if (!auth.currentUser) {
-      await signInAnonymously(auth);
-    }
+    await ensureAnonymousUser();
 
     const now = new Date();
-
-    const expiresAt = new Date(
-      now.getTime() + 30 * 24 * 60 * 60 * 1000
-    );
+    const expiresAt = new Date(now.getTime() + 30 * 86400000);
 
     const docRef = await addDoc(collection(db, "jobs"), {
-      title,
-      company,
+      title: title.slice(0, 100),
+      company: company.slice(0, 100),
       area,
-      salary,
-      details,
-      phone,
+      salary: salary.slice(0, 100),
+      details: details.slice(0, 1500),
+      phone: whatsappNumber(rawPhone),
       status: "pending",
       createdAt: serverTimestamp(),
       expiresAt: Timestamp.fromDate(expiresAt)
@@ -1043,24 +1214,25 @@ $("jobForm").addEventListener("submit", async event => {
 
     $("jobForm").reset();
 
-    showStatus(
-      "تم إرسال الوظيفة للمراجعة بنجاح ❤️ " +
-      "مدة الإعلان 30 يومًا. رقم الطلب: " + docRef.id
+    setMessage(
+      "status",
+      "تم حفظ طلب الوظيفة وإرساله للمراجعة بنجاح ❤️\nرقم الطلب: " +
+      docRef.id +
+      "\nستظهر الوظيفة بعد موافقة الإدارة.",
+      "success"
     );
 
   } catch (error) {
     console.error("Submit job error:", error);
-
-    showStatus(
-      "لم يتم حفظ الوظيفة. رمز الخطأ: " +
-      (error.code || "غير معروف") +
-      "\nالتفاصيل: " + (error.message || "حاول مرة أخرى."),
-      true
+    setMessage(
+      "status",
+      "لم يتم حفظ الوظيفة. رمز الخطأ: " + errorCode(error) +
+      "\nتحقق من صلاحيات Firestore وتسجيل الدخول المجهول.",
+      "error"
     );
-
   } finally {
     btn.disabled = false;
-    btn.textContent = "نشر الوظيفة";
+    btn.textContent = "📨 إرسال الوظيفة للمراجعة";
   }
 });
 
@@ -1072,11 +1244,10 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
     navigator.serviceWorker.register("./sw.js")
       .catch(function(error) {
-        console.error("Service Worker error:", error);
+        console.warn("Service Worker registration failed:", error);
       });
   });
 }
 </script>
-
 </body>
 </html>
