@@ -67,5 +67,6 @@ assert(employer.includes('id="topJobsReport"') && employer.includes('id="expiryJ
 assert(employer.includes('id="myJobSearch"') && employer.includes('id="myJobStatus"') && employer.includes("visibleJobs.forEach(job=>{"), "employer dashboard supports searching and filtering owned jobs by status");
 assert(employer.includes("Timestamp.fromDate(new Date(Date.now()+30*86400000))") && employer.includes('textContent="🔄 تجديد 30 يومًا"') && employer.includes("expiresAt"), "employer can renew a published job expiry without changing its approval status");
 assert(employer.includes('id="applicationCounts"') && employer.includes('id="applicationStatusFilter"') && employer.includes("function renderApplicationSummary()") && employer.includes("appStatusFilter"), "employer dashboard summarizes application statuses and filters applicant lists");
+assert(employer.includes('id="exportApplicationsBtn"') && employer.includes("function exportApplicationsCsv()") && employer.includes("function csvCell(value)") && employer.includes("currentApplications.map"), "employer can export their own application records as CSV with CSV cell escaping");
 
 if (process.exitCode) process.exit(process.exitCode);
