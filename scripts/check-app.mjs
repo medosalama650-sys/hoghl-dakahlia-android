@@ -49,7 +49,7 @@ function checkModuleSyntax(source, label) {
 
 checkModuleSyntax(moduleMatch?.[1], "main");
 
-const employerModuleMatch = employer.match(/<script type="module">([\\s\\S]*?)<\\/script>/i);
+const employerModuleMatch = employer.match(/<script type="module">([\s\S]*?)<\/script>/i);
 assert(Boolean(employerModuleMatch), "employer dashboard Firebase module exists");
 checkModuleSyntax(employerModuleMatch?.[1], "employer");
 assert(employer.includes("sendPasswordResetEmail") && employer.includes('id="resetBtn"'), "employer password reset button is wired to Firebase Auth");
