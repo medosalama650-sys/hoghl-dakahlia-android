@@ -1,5 +1,5 @@
-const CACHE_NAME = "shoghl-dakahlia-shell-v12";
-const APP_SHELL = ["./", "./index.html", "./manifest.json", "./icon.svg"];
+const CACHE_NAME = "shoghl-dakahlia-shell-v13";
+const APP_SHELL = ["./", "./index.html", "./employer.html", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", event => {
   event.waitUntil(
@@ -28,11 +28,12 @@ self.addEventListener("fetch", event => {
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put("./index.html", copy));
+            const cacheKey = url.pathname.endsWith("/employer.html") ? "./employer.html" : "./index.html";
+            caches.open(CACHE_NAME).then(cache => cache.put(cacheKey, copy));
           }
           return response;
         })
-        .catch(() => caches.match(request).then(cached => cached || caches.match("./index.html")))
+        .catch(() => caches.match(request).then(cached => cached || caches.match(url.pathname.endsWith("/employer.html") ? "./employer.html" : "./index.html")))
     );
     return;
   }
