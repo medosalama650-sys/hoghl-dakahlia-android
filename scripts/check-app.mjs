@@ -60,5 +60,6 @@ assert(employer.includes('where("ownerUid","==",user.uid)') && rules.includes("r
 assert(employer.includes("function renderSummary()") && employer.includes("job.views") && employer.includes("job.applyClicks"), "employer dashboard displays per-job and account-level analytics");
 assert(employer.includes("function jobAdvice(job)") && employer.includes("راجع تفاصيل الإعلان") && employer.includes("يُفضّل مراجعة الإعلان"), "employer dashboard provides age- and engagement-based ad review hints");
 assert(employer.includes('id="myJobSearch"') && employer.includes('id="myJobStatus"') && employer.includes("visibleJobs.forEach(job=>{"), "employer dashboard supports searching and filtering owned jobs by status");
+assert(employer.includes("Timestamp.fromDate(new Date(Date.now()+30*86400000))") && employer.includes('textContent="🔄 تجديد 30 يومًا"') && employer.includes("expiresAt"), "employer can renew a published job expiry without changing its approval status");
 
 if (process.exitCode) process.exit(process.exitCode);
