@@ -50,6 +50,36 @@ footer{text-align:center;padding:22px 12px;color:var(--muted);font-size:11px}foo
 .admin-item .admin-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0}.admin-metrics span{background:#f5f8f5;padding:7px 4px;border-radius:8px;text-align:center;font-size:11px}
 @media(max-width:420px){.admin-item .admin-metrics{grid-template-columns:1fr 1fr}}
 
+
+/* إصلاح أزرار التقديم والمشاركة وسجل التقديم على الموبايل */
+.job-actions{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  align-items:stretch;
+}
+.job-actions a,
+.job-actions button{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  min-height:44px;
+  margin:0;
+  padding:9px 6px;
+  flex:none;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  line-height:1.45;
+  text-align:center;
+  font-size:12px;
+}
+.job-actions .whatsapp{grid-column:1/-1}
+@media(max-width:360px){
+  .job-actions{grid-template-columns:minmax(0,1fr)}
+  .job-actions .whatsapp{grid-column:auto}
+  .job-actions a,
+  .job-actions button{font-size:13px;padding:10px}
+}
 </style>
 </head>
 <body>
