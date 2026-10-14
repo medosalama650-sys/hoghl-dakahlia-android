@@ -75,7 +75,8 @@ service cloud.firestore {
       return signedIn()
         && resource.data.get('ownerUid', '') == request.auth.uid
         && request.resource.data.get('ownerUid', '') == request.auth.uid
-        && changed.hasOnly(['title', 'company', 'category', 'area', 'salary', 'details', 'phone', 'lat', 'lng', 'expiresAt'])
+        && changed.hasOnly(['title', 'company', 'category', 'area', 'salary', 'details', 'phone', 'lat', 'lng', 'expiresAt', 'status'])
+        && (!changed.hasAny(['status']) || (resource.data.status == 'approved' && request.resource.data.status == 'pending' && changed.hasAny(['title', 'company', 'category', 'area', 'salary', 'details', 'phone', 'lat', 'lng', 'expiresAt'])))
         && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 100
         && request.resource.data.company is string && request.resource.data.company.size() > 0 && request.resource.data.company.size() <= 100
         && request.resource.data.category is string && request.resource.data.category.size() > 0 && request.resource.data.category.size() <= 60
