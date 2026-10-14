@@ -21,6 +21,7 @@ const assert = (condition, message) => {
 
 assert(html.includes('lang="ar" dir="rtl"'), "main page keeps Arabic RTL layout");
 assert(html.includes('https://wa.me/'), "WhatsApp application links remain available");
+assert(html.includes("مشاركة الجهة") && html.includes("navigator.share") && html.includes("clipboard.writeText(text)"), "company directory supports native sharing and clipboard fallback");
 assert(html.includes("sendPasswordResetEmail") || employer.includes("sendPasswordResetEmail"), "password reset flow remains in the app");
 assert(html.includes('collection(db,"jobs")'), "main page remains connected to Firestore jobs");
 assert(html.includes("visibleJobLimit=20") && html.includes("filtered.slice(0,visibleJobLimit)"), "job list renders in incremental batches");
