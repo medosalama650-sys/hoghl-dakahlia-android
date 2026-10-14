@@ -117,6 +117,43 @@ service cloud.firestore {
       allow delete: if isAdmin() || (signedIn() && resource.data.get('ownerUid', '') == request.auth.uid);
     }
 
+    match /applications/{applicationId} {
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll([
+          'jobId', 'jobTitle', 'ownerUid', 'applicantUid',
+          'applicantName', 'applicantPhone', 'status', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'jobId', 'jobTitle', 'ownerUid', 'applicantUid',
+          'applicantName', 'applicantPhone', 'status', 'createdAt'
+        ])
+        && request.resource.data.jobId is string
+        && request.resource.data.jobTitle is string
+        && request.resource.data.jobTitle.size() > 0
+        && request.resource.data.jobTitle.size() <= 100
+        && request.resource.data.ownerUid is string
+        && request.resource.data.applicantUid == request.auth.uid
+        && request.resource.data.applicantName is string
+        && request.resource.data.applicantName.size() > 0
+        && request.resource.data.applicantName.size() <= 100
+        && request.resource.data.applicantPhone is string
+        && request.resource.data.applicantPhone.size() >= 10
+        && request.resource.data.applicantPhone.size() <= 20
+        && request.resource.data.status == 'received'
+        && request.resource.data.createdAt == request.time
+        && exists(/databases/$(database)/documents/jobs/$(request.resource.data.jobId))
+        && get(/databases/$(database)/documents/jobs/$(request.resource.data.jobId)).data.status == 'approved'
+        && get(/databases/$(database)/documents/jobs/$(request.resource.data.jobId)).data.get('ownerUid', '') == request.resource.data.ownerUid;
+      allow read: if isAdmin()
+        || (signedIn() && resource.data.applicantUid == request.auth.uid)
+        || (signedIn() && resource.data.ownerUid == request.auth.uid);
+      allow update: if signedIn()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['contacted', 'interview', 'accepted', 'rejected'];
+      allow delete: if isAdmin() || (signedIn() && resource.data.applicantUid == request.auth.uid);
+    }
+
     match /reports/{reportId} {
       allow create: if signedIn()
         && request.resource.data.keys().hasAll([
