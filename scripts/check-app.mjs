@@ -55,5 +55,6 @@ checkModuleSyntax(employerModuleMatch?.[1], "employer");
 assert(employer.includes("sendPasswordResetEmail") && employer.includes('id="resetBtn"'), "employer password reset button is wired to Firebase Auth");
 assert(employer.includes('where("ownerUid","==",user.uid)'), "employer dashboard scopes job queries to the signed-in owner");
 assert(employer.includes('where("ownerUid","==",user.uid)') && rules.includes("resource.data.ownerUid == request.auth.uid"), "owner-only job access is represented in the dashboard and Firestore rules");
+assert(employer.includes("function renderSummary()") && employer.includes("job.views") && employer.includes("job.applyClicks"), "employer dashboard displays per-job and account-level analytics");
 
 if (process.exitCode) process.exit(process.exitCode);
