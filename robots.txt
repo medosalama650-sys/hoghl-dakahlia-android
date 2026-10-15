@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /employer.html
 
 Sitemap: https://medosalama650-sys.github.io/hoghl-dakahlia-android/sitemap.xml
