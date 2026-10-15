@@ -1,3 +1,4 @@
+# robots.txt - شغل الدقهلية
 User-agent: *
 Allow: /
 
