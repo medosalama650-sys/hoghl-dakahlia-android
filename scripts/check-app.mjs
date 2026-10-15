@@ -33,6 +33,7 @@ assert(html.includes("sendEmailVerification(user)") && html.includes("function s
 assert(html.includes('id="resetSeekerPasswordBtn"') && html.includes("sendPasswordResetEmail(auth,email)"), "job seekers can request a password reset email");
 assert(html.includes('id="appConnectionNotice"') && html.includes("updateAppConnectionNotice") && html.includes('addEventListener("offline"'), "main page shows an accessible warning when the device is offline");
 assert(html.includes('ownerUid:String(job.ownerUid||""),applicantUid:user.uid'), "in-platform applications safely handle job posts without an owner UID");
+assert(html.includes("getDoc(applicationRef)") && html.includes("setDoc(applicationRef") && html.includes("`${user.uid}_${job.id}`") && html.includes("أنت قدمت بالفعل على الوظيفة دي"), "in-platform applications use a stable applicant/job ID and warn on repeat submissions");
 assert(html.includes("function notifyApplicantStatusChange(application)") && html.includes("change.type===\"modified\"") && html.includes("Notification.requestPermission()") && html.includes('id="enableMyApplicationNotifications"'), "job seekers can opt into notifications when an existing application status changes");
 assert(html.includes("sendPasswordResetEmail") || employer.includes("sendPasswordResetEmail"), "password reset flow remains in the app");
 assert(html.includes('collection(db,"jobs")'), "main page remains connected to Firestore jobs");
