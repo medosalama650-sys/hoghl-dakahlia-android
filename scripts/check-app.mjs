@@ -39,6 +39,9 @@ assert(html.includes('collection(db,"jobs")'), "main page remains connected to F
 assert(html.includes("visibleJobLimit=20") && html.includes("filtered.slice(0,visibleJobLimit)"), "job list renders in incremental batches");
 assert(employer.includes("onAuthStateChanged") && employer.includes("createUserWithEmailAndPassword"), "employer authentication remains available");
 assert(rules.includes("function isAdmin()") && rules.includes("validAdminJobUpdate()"), "Firestore rules retain explicit admin checks");
+assert(rules.includes("function validMetricIncrement(field)") && rules.includes("resource.data.status == 'approved'") && rules.includes("request.resource.data.get(field, 0) == resource.data.get(field, 0) + 1"), "job metrics are limited to one-step increments on approved jobs");
+assert(rules.includes("get(/databases/$(database)/documents/jobs/$(request.resource.data.jobId)).data.get('ownerUid', '') == request.resource.data.ownerUid"), "applications must match the referenced job owner");
+assert(!rules.includes("allow read, write: if true") && !rules.includes("allow read: if true") && !rules.includes("allow write: if true"), "Firestore rules do not grant blanket public access");
 assert(!html.includes("delete jobPayload.ownerUid"), "permission errors cannot silently strip job ownership");
 assert(/shoghl-dakahlia-shell-v\d+/.test(sw), "service-worker cache has a versioned app shell");
 
