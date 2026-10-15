@@ -9,6 +9,9 @@ const html = read("index.html");
 const employer = read("employer.html");
 const sw = read("sw.js");
 const rules = read("firestore.rules");
+const robots = read("robots.txt");
+const sitemap = read("sitemap.xml");
+const manifest = read("manifest.json");
 
 const assert = (condition, message) => {
   if (!condition) {
@@ -45,6 +48,10 @@ assert(rules.includes("get(/databases/$(database)/documents/jobs/$(request.resou
 assert(!rules.includes("allow read, write: if true") && !rules.includes("allow read: if true") && !rules.includes("allow write: if true"), "Firestore rules do not grant blanket public access");
 assert(!html.includes("delete jobPayload.ownerUid"), "permission errors cannot silently strip job ownership");
 assert(/shoghl-dakahlia-shell-v\d+/.test(sw), "service-worker cache has a versioned app shell");
+assert(robots.includes("User-agent: *") && robots.includes("Allow: /"), "robots.txt allows crawlers to access the public site");
+assert(robots.includes("https://medosalama650-sys.github.io/hoghl-dakahlia-android/sitemap.xml"), "robots.txt points to the project sitemap URL");
+assert(sitemap.includes("<urlset") && sitemap.includes("</urlset>") && sitemap.includes("<loc>https://medosalama650-sys.github.io/hoghl-dakahlia-android/</loc>"), "sitemap.xml contains the canonical public homepage");
+try { JSON.parse(manifest); console.log("PASS: web app manifest is valid JSON"); } catch { console.error("FAIL: web app manifest is valid JSON"); process.exitCode = 1; }
 
 const moduleMatch = html.match(/<script type="module">([\s\S]*?)<\/script>/i);
 assert(Boolean(moduleMatch), "main Firebase module script exists");
