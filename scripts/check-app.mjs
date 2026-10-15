@@ -23,6 +23,8 @@ const assert = (condition, message) => {
 };
 
 assert(html.includes('lang="ar" dir="rtl"'), "main page keeps Arabic RTL layout");
+assert(html.includes('data-view="safety"') && html.includes('id="view-safety"'), "safety guidance page is available from the navigation");
+assert(html.includes("متدفعش فلوس عشان تتوظف") && html.includes("كود OTP") && html.includes("بلّغ عن الإعلان المشبوه"), "safety guidance warns about job fees, verification codes, and suspicious listings");
 assert(html.includes('https://wa.me/'), "WhatsApp application links remain available");
 assert(html.includes("مشاركة الجهة") && html.includes("navigator.share") && html.includes("clipboard.writeText(text)"), "company directory supports native sharing and clipboard fallback");
 assert(html.includes("function savedSearchMatches(job,filters)") && html.includes("notifySavedSearchMatches(job)") && html.includes("saved-search-alert") && html.includes("alertEnabled"), "saved searches support opt-in matching job notifications");
