@@ -31,6 +31,8 @@ assert(html.includes('id="view-account"') && html.includes('id="seekerAccountFor
 assert(html.includes("async function loginSeekerAccount()") && html.includes("signInWithEmailAndPassword(auth,email,password)") && html.includes("auth/invalid-credential"), "job seekers can log in to an existing email account with understandable errors");
 assert(html.includes("sendEmailVerification(user)") && html.includes("function sendSeekerVerification()") && html.includes("function refreshSeekerVerification()") && html.includes("await reload(user)") && html.includes("user.emailVerified"), "job seekers can verify email, resend the verification message, and refresh verification status");
 assert(html.includes('id="resetSeekerPasswordBtn"') && html.includes("sendPasswordResetEmail(auth,email)"), "job seekers can request a password reset email");
+assert(html.includes('id="appConnectionNotice"') && html.includes("updateAppConnectionNotice") && html.includes('addEventListener("offline"'), "main page shows an accessible warning when the device is offline");
+assert(html.includes('ownerUid:String(job.ownerUid||""),applicantUid:user.uid'), "in-platform applications safely handle job posts without an owner UID");
 assert(html.includes("function notifyApplicantStatusChange(application)") && html.includes("change.type===\"modified\"") && html.includes("Notification.requestPermission()") && html.includes('id="enableMyApplicationNotifications"'), "job seekers can opt into notifications when an existing application status changes");
 assert(html.includes("sendPasswordResetEmail") || employer.includes("sendPasswordResetEmail"), "password reset flow remains in the app");
 assert(html.includes('collection(db,"jobs")'), "main page remains connected to Firestore jobs");
