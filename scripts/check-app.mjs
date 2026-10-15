@@ -23,6 +23,7 @@ const assert = (condition, message) => {
 };
 
 assert(html.includes('lang="ar" dir="rtl"'), "main page keeps Arabic RTL layout");
+assert(html.includes('id="careerProfileProgress"') && html.includes("function updateCareerProfileProgress()") && html.includes('aria-valuemax="6"') && html.includes('aria-valuenow'), "career profile displays an accessible live completion meter");
 assert(html.includes('id="careerProfileForm"') && html.includes("function collectCareerProfile()") && html.includes("function persistCareerProfile(showSuccess=true)") && html.includes('addEventListener("change",()=>persistCareerProfile(true))') && html.includes('localStorage.setItem("shoghlCareerProfile",JSON.stringify(profile))'), "career profile auto-saves changed fields locally while validating phone numbers");
 assert(html.includes('id="hideAppliedBtn"') && html.includes("hideAppliedMode") && html.includes("hideAppliedMode&&appliedIds.has(j.id)"), "job seekers can hide jobs they have already marked as applied");
 assert(html.includes('name="firebase-app-check-site-key" content=""') && html.includes("initializeAppCheck") && html.includes("ReCaptchaV3Provider") && html.includes("isTokenAutoRefreshEnabled:true"), "main page prepares optional Firebase App Check without enforcing it before a site key is configured");
