@@ -29,6 +29,7 @@
 }
 </script>
 <meta name="theme-color" content="#103b32">
+<meta name="firebase-app-check-site-key" content="">
 <meta name="color-scheme" content="light">
 <meta name="description" content="شغل الدقهلية منصة مجانية للبحث عن وظائف في المنصورة وقرى الدقهلية حتى دكرنس. تصفح فرص العمل حسب المنطقة والتخصص وقدّم مباشرة عبر واتساب.">
 <meta name="keywords" content="وظائف الدقهلية, وظائف المنصورة, شغل الدقهلية, وظائف دكرنس, وظائف كاشير, وظائف مبيعات, وظائف مطاعم, وظائف سائقين, وظائف عمال, وظائف محاسبين, وظائف دليفري">
@@ -271,10 +272,14 @@ footer{text-align:center;padding:22px 12px;color:var(--muted);font-size:11px}foo
 <footer><strong>شغل الدقهلية</strong><br>منصة محلية لعرض فرص العمل في الدقهلية<br>© جميع الحقوق محفوظة</footer>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import {initializeAppCheck,ReCaptchaV3Provider} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app-check.js";
 import {getAuth,signInAnonymously,signInWithEmailAndPassword,onAuthStateChanged,signOut,EmailAuthProvider,linkWithCredential,sendPasswordResetEmail,sendEmailVerification,reload} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {getFirestore,collection,addDoc,getDoc,setDoc,serverTimestamp,Timestamp,query,where,onSnapshot,doc,updateDoc,deleteDoc,orderBy,increment} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyAx1gcyth1EFOCV2z4peE3nP7F5d2IHDOc",authDomain:"hoghl-dakahlia.firebaseapp.com",projectId:"hoghl-dakahlia",storageBucket:"hoghl-dakahlia.firebasestorage.app",messagingSenderId:"437958970783",appId:"1:437958970783:web:0399059a90cec0e0aa01aa",measurementId:"G-2ZKG5V6ESQ"};
-const ADMIN_EMAIL="medosalama650@gmail.com",app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),$=id=>document.getElementById(id);
+const ADMIN_EMAIL="medosalama650@gmail.com",app=initializeApp(firebaseConfig);
+const appCheckSiteKey=document.querySelector('meta[name="firebase-app-check-site-key"]')?.content.trim()||"";
+if(appCheckSiteKey){try{initializeAppCheck(app,{provider:new ReCaptchaV3Provider(appCheckSiteKey),isTokenAutoRefreshEnabled:true})}catch(error){console.warn("Firebase App Check initialization skipped",error)}}
+const auth=getAuth(app),db=getFirestore(app),$=id=>document.getElementById(id);
 let allJobs=[],selectedReportJob=null,selectedApplicationJob=null,stopJobs=null,stopPending=null,stopReports=null,stopAllJobs=null,stopApplicantApplications=null,applicantApplicationSnapshotReady=false,applicantApplications=[],authTask=null,lastReportClick=0,savedIds=new Set();
 let visibleJobLimit=20,lastJobFilterKey="";
 let userCoords=null,previousApprovedIds=null,alertPrefs=loadAlertPrefs(),nearbyMode=false,installPromptEvent=null,savedOnlyMode=false,appliedOnlyMode=false;let adminCounts={total:0,approved:0,pending:0,reports:0};
