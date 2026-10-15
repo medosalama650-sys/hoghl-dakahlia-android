@@ -23,6 +23,7 @@ const assert = (condition, message) => {
 };
 
 assert(html.includes('lang="ar" dir="rtl"'), "main page keeps Arabic RTL layout");
+assert(html.includes('"@type": "WebSite"') && html.includes('"publisher"') && html.includes('"areaServed"') && html.includes('"name": "الدقهلية، مصر"'), "SEO structured data identifies the site publisher and its local service area");
 assert(html.includes('data-view="safety"') && html.includes('id="view-safety"'), "safety guidance page is available from the navigation");
 assert(html.includes("متدفعش فلوس عشان تتوظف") && html.includes("كود OTP") && html.includes("بلّغ عن الإعلان المشبوه"), "safety guidance warns about job fees, verification codes, and suspicious listings");
 assert(html.includes('https://wa.me/'), "WhatsApp application links remain available");
