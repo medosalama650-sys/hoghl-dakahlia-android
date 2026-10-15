@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">شغل الدقهلية | منصة الوظائف الحقيقية</title>
+<desc id="desc">فرص عمل في المنصورة وقرى الدقهلية حتى دكرنس</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#092b25"/><stop offset=".65" stop-color="#103b32"/><stop offset="1" stop-color="#287056"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6d88e"/><stop offset="1" stop-color="#e9bd62"/></linearGradient></defs>
+<rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+<circle cx="1030" cy="90" r="220" fill="#ffffff" opacity=".035"/><circle cx="150" cy="620" r="260" fill="#ffffff" opacity=".035"/>
+<rect x="80" y="78" width="1040" height="474" rx="30" fill="none" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+<rect x="510" y="126" width="180" height="100" rx="26" fill="url(#gold)"/>
+<g fill="#103b32"><path d="M555 190v-35l45-25 45 25v35h-20v-25h-50v25z"/><path d="M548 154l52-29 52 29-8 13-44-24-44 24z"/></g>
+<text x="600" y="302" text-anchor="middle" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="62" font-weight="800" fill="#ffffff">شغل الدقهلية</text>
+<text x="600" y="360" text-anchor="middle" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="30" font-weight="700" fill="#f6d88e">منصة الوظائف الحقيقية</text>
+<path d="M350 398H850" stroke="#f6d88e" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+<text x="600" y="450" text-anchor="middle" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="25" fill="#e0eee6">فرص عمل في المنصورة وقرى الدقهلية حتى دكرنس</text>
+<text x="600" y="496" text-anchor="middle" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="21" font-weight="700" fill="#ffffff">ابحث عن شغلك وقدّم مباشرة عبر واتساب</text>
+</svg>
