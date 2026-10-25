@@ -865,7 +865,10 @@ const shareAppButton=$("shareAppBtn");if(shareAppButton)shareAppButton.addEventL
 const backToTopButton=$("backToTopBtn");function updateBackToTop(){if(backToTopButton)backToTopButton.hidden=window.scrollY<420}if(backToTopButton){backToTopButton.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));window.addEventListener("scroll",updateBackToTop,{passive:true});updateBackToTop()}
 
 const careerToolsPanel=document.querySelector(".career-tools-panel");
-const careerToolsToggle=$("careerToolsToggle"),careerToolsClose=$("careerToolsClose"),careerToolsBackdrop=$("careerToolsBackdrop");
+const careerToolsToggle=$("careerToolsToggle"),careerToolsClose=$("careerToolsClose");
+/* Keep the tools drawer outside hidden page views so it can open from any screen. */
+if(careerToolsPanel && careerToolsPanel.parentElement!==document.body) document.body.appendChild(careerToolsPanel);
+const careerToolsBackdrop=$("careerToolsBackdrop");
 if(careerToolsPanel){careerToolsPanel.id="careerToolsDrawer";careerToolsPanel.setAttribute("role","dialog");careerToolsPanel.setAttribute("aria-label","مركز التميز وأدوات الباحث");careerToolsPanel.setAttribute("aria-modal","true")}
 function setCareerToolsOpen(open){if(!careerToolsPanel)return;careerToolsPanel.classList.toggle("career-tools-open",open);careerToolsBackdrop.hidden=!open;careerToolsToggle?.setAttribute("aria-expanded",String(open));document.body.classList.toggle("career-tools-lock",open);if(open)careerToolsClose?.focus();else careerToolsToggle?.focus()}
 careerToolsToggle?.addEventListener("click",()=>{const open=!careerToolsPanel?.classList.contains("career-tools-open");setCareerToolsOpen(open);if(open){const sideDrawer=document.getElementById("sideDrawer");if(sideDrawer?.classList.contains("open")){sideDrawer.classList.remove("open");sideDrawer.setAttribute("aria-hidden","true");sideDrawer.setAttribute("inert","");document.body.classList.remove("drawer-open");const backdrop=document.getElementById("drawerBackdrop");if(backdrop)backdrop.hidden=true}}});
