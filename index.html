@@ -290,6 +290,15 @@ body.career-tools-lock{overflow:hidden}
 .ai-assistant-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media(max-width:480px){.ai-assistant-grid{grid-template-columns:1fr}.ai-assistant-panel{padding:10px 9px calc(20px + env(safe-area-inset-bottom,0px))}}
 
+
+/* إصلاح طبقات التعتيم: العناصر المخفية لا تعترض النقرات */
+#careerToolsBackdrop[hidden],
+#aiAssistantBackdrop[hidden]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+#careerToolsBackdrop:not([hidden]),
+#aiAssistantBackdrop:not([hidden]){display:block;pointer-events:auto}
+.drawer-backdrop:not(.open){pointer-events:none}
+.drawer-backdrop.open{pointer-events:auto}
+
 </style>
 </head>
 <body>
