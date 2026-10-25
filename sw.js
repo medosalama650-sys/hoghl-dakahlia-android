@@ -1,4 +1,4 @@
-const CACHE_NAME = "shoghl-dakahlia-shell-v52";
+const CACHE_NAME = "shoghl-dakahlia-shell-v53";
 const APP_SHELL = ["./", "./index.html", "./employer.html", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", event => {
