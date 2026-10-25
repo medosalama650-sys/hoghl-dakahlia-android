@@ -299,6 +299,52 @@ body.career-tools-lock{overflow:hidden}
 .drawer-backdrop:not(.open){pointer-events:none}
 .drawer-backdrop.open{pointer-events:auto}
 
+
+/* 2026-redesign-v1: refreshed mobile app shell */
+:root{--green:#073b30;--green2:#125744;--mint:#e9f3ed;--gold:#efc75e;--text:#163b30;--muted:#63766c;--line:#dbe8df;--red:#a52a2a;--surface:#fff;--shadow:0 8px 24px rgba(7,59,48,.08)}
+html{background:#f0f5f1}
+body{background:#f0f5f1;color:var(--text);font-family:"Cairo","Segoe UI",Tahoma,Arial,sans-serif}
+header{position:relative;background:radial-gradient(ellipse at 12% 8%,#286c51 0%,transparent 36%),linear-gradient(145deg,#052d25 0%,#0b4435 58%,#135642 100%);border-radius:0 0 32px 32px;padding:15px 15px 28px;box-shadow:0 12px 32px #062d2420;overflow:hidden}
+header:after{content:"";position:absolute;pointer-events:none;left:-70px;bottom:-110px;width:260px;height:260px;border:1px solid #e9bd6224;border-radius:50%;box-shadow:0 0 0 24px #e9bd6208,0 0 0 48px #e9bd6207}
+.header-inner,.main-inner{max-width:780px}
+.brand{font-size:clamp(25px,6vw,34px);font-weight:900;line-height:1.35;color:#fff}
+.prophet{color:#f4d47e;font-size:14px}
+.header-rizq-dua{position:relative;border-radius:20px;border-color:#e9bd6248;background:linear-gradient(135deg,#ffffff0d,#e9bd6210);backdrop-filter:blur(8px);padding:12px 14px}
+.header-dua-label{color:#f3d278}
+.header-dua-text{font-size:clamp(15px,4vw,20px)}
+.header-dua-source{color:#c5ddd0}
+.header-inner .hero,.hero-home,.home-hero{border-radius:24px}
+main,.main-inner{padding-left:12px;padding-right:12px}
+.panel,.card,.job-card,.tool-card,.company-card,.stat-card,.modal-content{border:1px solid #e2ebe4;border-radius:20px;box-shadow:var(--shadow)}
+button,.action-btn,.primary,.secondary,.drawer-link{transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
+button:active,.action-btn:active{transform:scale(.98)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e9bd62;outline-offset:2px}
+.primary,button.primary,.btn-primary{background:linear-gradient(135deg,#efcf70,#e8b94e);color:#163b30;border:0;font-weight:900;border-radius:15px;box-shadow:0 5px 12px #b88a2c1f}
+.secondary,button.secondary{border-radius:14px}
+input,select,textarea{border-radius:14px!important;border-color:#d8e5dc!important;min-height:44px}
+input:focus,select:focus,textarea:focus{border-color:#398264!important;box-shadow:0 0 0 3px #1b59491a}
+.job-card{padding:15px;background:linear-gradient(180deg,#fff,#fcfefc);margin-bottom:12px}
+.job-card h3,.job-card h2{line-height:1.5}
+.category-chip,.filter-chip{border-radius:999px!important}
+.drawer{border-radius:0 0 0 24px;box-shadow:-14px 0 40px #0002}
+.drawer-head{background:radial-gradient(circle at top left,#26694e,transparent 55%),linear-gradient(145deg,#062e26,#10513e);color:white}
+.drawer-link{border-radius:14px;margin:3px 8px}
+.drawer-link.active,.drawer-link[aria-current="page"]{background:#e8f3eb;color:#104b38}
+.mobile-bottom-nav{padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:#fffffff2;border-top:1px solid #dbe8df;box-shadow:0 -8px 28px #0b3a2d12}
+.mobile-bottom-nav button{border-radius:14px;min-height:55px;color:#53665c;font-weight:700}
+.mobile-bottom-nav button.active,.mobile-bottom-nav button[aria-current="page"]{background:#e8f3eb;color:#104c38}
+.mobile-bottom-nav button span,.mobile-bottom-nav button .nav-icon{font-size:21px}
+.ai-assistant-panel{background:#f0f5f1}
+.ai-assistant-hero{border-radius:22px;box-shadow:0 10px 24px #0b3a2d18}
+.ai-assistant-output{border-radius:16px;background:#fff}
+#careerToolsBackdrop[hidden],#aiAssistantBackdrop[hidden]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+#careerToolsBackdrop:not([hidden]),#aiAssistantBackdrop:not([hidden]){display:block;pointer-events:auto}
+.drawer-backdrop:not(.open){pointer-events:none}
+.drawer-backdrop.open{pointer-events:auto}
+@media(min-width:701px){.main-inner{padding-top:12px}.job-card:hover,.panel:hover{box-shadow:0 12px 28px #0b3a2d12}}
+@media(max-width:700px){header{padding:12px 12px 25px;border-radius:0 0 28px 28px}.main-inner{padding-left:10px;padding-right:10px}.panel{padding:14px!important}.mobile-bottom-nav button{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+
 </style>
 </head>
 <body>
