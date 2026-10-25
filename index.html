@@ -994,5 +994,78 @@ aiAssistantCopy?.addEventListener("click",async()=>{const value=aiAssistantOutpu
 
 })();
 </script>
+
+<!-- أدوات تطوير جديدة: CV للطباعة/الحفظ PDF + تجهيز مقابلة + يومية وتدريب -->
+<section id="careerPlusPanel" class="career-plus-panel" aria-label="أدوات مهنية إضافية">
+ <div class="career-plus-head"><span>✨ أدوات جديدة</span><h2>خلّي فرصتك أقوى</h2><p>جهّز سيرتك، حضّر مقابلتك، واكتشف فرص اليومية والتدريب.</p></div>
+ <div class="career-plus-grid">
+  <article class="career-plus-card"><div class="career-plus-icon">📄</div><h3>إنشاء سيرة ذاتية</h3><p>اكتب بياناتك واعرض سيرة ذاتية مرتبة، ثم اختر طباعة أو حفظ PDF من الهاتف.</p>
+   <label for="cpName">الاسم</label><input id="cpName" maxlength="80" placeholder="اسمك الكامل">
+   <label for="cpRole">المسمى الوظيفي</label><input id="cpRole" maxlength="100" placeholder="مثال: كاشير أو مندوب مبيعات">
+   <label for="cpArea">المنطقة</label><input id="cpArea" maxlength="100" placeholder="مثال: المنصورة">
+   <label for="cpEducation">المؤهل</label><input id="cpEducation" maxlength="120" placeholder="المؤهل الدراسي">
+   <label for="cpExperience">الخبرة</label><textarea id="cpExperience" maxlength="1200" rows="3" placeholder="اكتب خبرتك الحقيقية ومهامك"></textarea>
+   <label for="cpSkills">المهارات</label><textarea id="cpSkills" maxlength="800" rows="2" placeholder="مثال: خدمة العملاء، Excel، الالتزام"></textarea>
+   <button type="button" id="cpMakeCv" class="primary">📑 تجهيز السيرة وحفظ PDF</button><div id="cpCvStatus" class="career-plus-status" aria-live="polite"></div>
+  </article>
+  <article class="career-plus-card"><div class="career-plus-icon">🎤</div><h3>تجهيز مقابلة العمل</h3><p>اكتب الوظيفة وموعد المقابلة لتحصل على قائمة تحضير منظمة على جهازك.</p>
+   <label for="cpInterviewRole">الوظيفة</label><input id="cpInterviewRole" maxlength="100" placeholder="الوظيفة اللي هتقدم عليها">
+   <label for="cpInterviewDate">موعد المقابلة</label><input id="cpInterviewDate" type="datetime-local">
+   <button type="button" id="cpMakeInterview" class="primary">🗓️ جهّز خطة المقابلة</button><div id="cpInterviewStatus" class="career-plus-status" aria-live="polite"></div>
+   <ul class="career-plus-tips"><li>حضّر تعريفًا بنفسك في دقيقة.</li><li>راجع المهام والراتب وساعات العمل والإجازات.</li><li>اسأل عن مكان العمل والتعاقد والتأمين إن وجد.</li></ul>
+  </article>
+  <article class="career-plus-card"><div class="career-plus-icon">⚡</div><h3>دليل اليومية والتدريب</h3><p>استخدم الفلاتر الموجودة للبحث عن الفرص المؤقتة أو فرص البداية، وتأكد من الأجر والمدة قبل الاتفاق.</p>
+   <div class="career-plus-tags"><span>🧰 شغل يومي</span><span>🎓 تدريب</span><span>🌱 بدون خبرة</span><span>🕒 ورديات</span></div>
+   <button type="button" id="cpBrowseJobs" class="primary">🔎 تصفح الوظائف المنشورة</button><div id="cpBrowseStatus" class="career-plus-status" aria-live="polite"></div>
+  </article>
+ </div>
+</section>
+<style>
+.career-plus-panel{max-width:920px;margin:18px auto;padding:14px;color:#163d30;font-family:"Cairo",Tahoma,sans-serif}
+.career-plus-head{padding:20px;border-radius:24px;background:radial-gradient(circle at 5% 5%,#2b7a53,transparent 40%),linear-gradient(135deg,#06372d,#0f6247);color:#fff;box-shadow:0 12px 28px #073b2d22}
+.career-plus-head>span{display:inline-block;border-radius:999px;background:#ffffff18;color:#ffe08a;padding:6px 12px;font-weight:800;font-size:12px}
+.career-plus-head h2{margin:12px 0 4px;font-size:27px;font-weight:900;color:#fff}.career-plus-head p{margin:0;line-height:1.8;color:#e1f2e7}
+.career-plus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:14px}
+.career-plus-card{background:linear-gradient(160deg,#fff,#f6fbf7);border:1px solid #dcebe0;border-radius:22px;padding:16px;box-shadow:0 8px 22px #0a4b3510;min-width:0}
+.career-plus-icon{width:48px;height:48px;display:grid;place-items:center;background:linear-gradient(135deg,#fff0bd,#e2f5e8);border-radius:16px;font-size:25px}
+.career-plus-card h3{font-size:18px;font-weight:900;margin:10px 0 5px;color:#104b36}.career-plus-card p{font-size:13px;line-height:1.8;color:#65786d}
+.career-plus-card label{display:block;font-size:13px;font-weight:800;margin:10px 0 4px}.career-plus-card input,.career-plus-card textarea{width:100%;box-sizing:border-box;padding:11px;border:1px solid #d6e6db;border-radius:12px;background:#fff;font:inherit;min-height:43px}
+.career-plus-card button{width:100%;margin-top:12px;padding:12px;border:0;border-radius:13px;background:linear-gradient(135deg,#ffe18a,#efb941);color:#153d2d;font-weight:900}
+.career-plus-status{white-space:pre-wrap;font-size:13px;line-height:1.8;color:#0c563b;margin-top:10px}
+.career-plus-tips{padding-inline-start:22px;font-size:13px;line-height:2;color:#486456}
+.career-plus-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.career-plus-tags span{border:1px solid #d7eadc;background:#edf8ef;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800;color:#16553b}
+@media(max-width:650px){.career-plus-grid{grid-template-columns:1fr}.career-plus-head h2{font-size:23px}}
+@media print{body>*:not(#careerCvPrint){display:none!important}#careerCvPrint{display:block!important}}
+</style>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const val=id=>($(id)?.value||"").trim();
+$("cpMakeCv")?.addEventListener("click",()=>{
+ const name=val("cpName"),role=val("cpRole"),area=val("cpArea"),edu=val("cpEducation"),exp=val("cpExperience"),skills=val("cpSkills");
+ if(!name||!role){$("cpCvStatus").textContent="اكتب الاسم والمسمى الوظيفي على الأقل.";return}
+ let old=$("careerCvPrint");if(old)old.remove();
+ const cv=document.createElement("article");cv.id="careerCvPrint";
+ cv.style.cssText="display:none;direction:rtl;font-family:Tahoma,Arial,sans-serif;color:#173b30;padding:28px;max-width:800px;margin:auto;line-height:1.9";
+ const safe=s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+ cv.innerHTML='<h1 style="color:#0b6045;border-bottom:3px solid #efc75e;padding-bottom:10px">'+safe(name)+'</h1><h2>'+safe(role)+'</h2>'+(area?'<p><b>المنطقة:</b> '+safe(area)+'</p>':'')+(edu?'<h3>المؤهل الدراسي</h3><p>'+safe(edu).replace(/\n/g,"<br>")+'</p>':'')+(exp?'<h3>الخبرة العملية</h3><p>'+safe(exp).replace(/\n/g,"<br>")+'</p>':'')+(skills?'<h3>المهارات</h3><p>'+safe(skills).replace(/\n/g,"<br>")+'</p>':'')+'<p style="margin-top:35px;color:#65786d;font-size:11px">يرجى مراجعة البيانات وإضافة وسائل التواصل المناسبة قبل إرسال السيرة.</p>';
+ document.body.appendChild(cv);cv.style.display="block";
+ $("cpCvStatus").textContent="اتفتح عرض الطباعة. اختار «حفظ بتنسيق PDF» من قائمة الطابعة على الهاتف.";
+ window.print();cv.style.display="none";
+});
+$("cpMakeInterview")?.addEventListener("click",()=>{
+ const role=val("cpInterviewRole"),date=val("cpInterviewDate");
+ if(!role){$("cpInterviewStatus").textContent="اكتب اسم الوظيفة أولًا.";return}
+ const dateText=date?new Date(date).toLocaleString("ar-EG"):"لم يتم تحديد موعد";
+ $("cpInterviewStatus").textContent="خطة التحضير لوظيفة: "+role+"\nالموعد: "+dateText+"\n\n١. جهّز تعريفًا بنفسك وخبرتك.\n٢. حضّر مثالًا حقيقيًا عن حل مشكلة في العمل.\n٣. راجع وصف الوظيفة ومتطلباتها.\n٤. جهّز أسئلة عن الراتب وساعات العمل والإجازات والتعاقد.\n٥. احفظ عنوان المقابلة ووسيلة التواصل، وتأكد من الموعد مع جهة العمل.";
+});
+$("cpBrowseJobs")?.addEventListener("click",()=>{
+ const target=document.getElementById("view-jobs")||document.getElementById("jobs");
+ if(target){target.scrollIntoView({behavior:"smooth",block:"start"});$("cpBrowseStatus").textContent="انتقلت لقسم الوظائف المنشورة. استخدم البحث والتصنيفات الموجودة للعثور على الفرصة المناسبة."}
+ else {$("cpBrowseStatus").textContent="افتح قسم الوظائف من القائمة الرئيسية."}
+});
+})();
+</script>
+
 <button type="button" id="careerToolsBackdrop" class="career-tools-backdrop" aria-label="إغلاق مركز التميز" hidden></button>
 </body></html>
