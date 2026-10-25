@@ -276,6 +276,20 @@ body.career-tools-lock{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.career-tools-panel{transition:none}}
 
 .x-new-tool textarea{width:100%;box-sizing:border-box;resize:vertical;padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--text);font:inherit}.x-new-tool select{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--text)}.x-track-list{padding-inline-start:20px;font-size:12px;line-height:1.8}.x-track-list li{margin:5px 0;overflow-wrap:anywhere}.x-track-remove{width:auto!important;margin-inline-start:8px!important;padding:3px 8px!important;font-size:11px!important}
+
+/* مساعد المسار المهني الذكي */
+.ai-assistant-panel{position:fixed;z-index:1210;inset:0 0 0 auto;width:min(760px,100vw);height:100dvh;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;background:#f4f7f4;padding:16px 12px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 18px 60px #0004;transform:translateX(110%);visibility:hidden;opacity:0;transition:transform .24s ease,opacity .2s ease,visibility .24s ease}
+.ai-assistant-panel.ai-assistant-open{transform:translateX(0);visibility:visible;opacity:1}
+.ai-assistant-backdrop{position:fixed;inset:0;z-index:1209;background:#061b16d9;border:0;border-radius:0;width:100%;height:100%;padding:0}
+.ai-assistant-backdrop[hidden]{display:none}
+.ai-assistant-hero{background:linear-gradient(140deg,#092b25,#103b32 68%,#24664f);color:#fff;padding:18px;border-radius:18px;margin-bottom:12px}
+.ai-assistant-hero h2{font-size:21px;margin:0 0 4px;color:#fff}.ai-assistant-hero p{font-size:12px;margin:0;color:#e0eee6}
+.ai-assistant-badge{display:inline-block;background:#f2d58c;color:#173b30;border-radius:20px;padding:3px 9px;font-size:10px;font-weight:800;margin-bottom:7px}
+.ai-assistant-output{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.9;background:#f7faf7;border:1px solid #dce7df;border-radius:12px;padding:13px;min-height:90px;color:#20342e;font-size:13px}
+.ai-assistant-note{font-size:11px;color:#5c6c62;line-height:1.8}
+.ai-assistant-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:480px){.ai-assistant-grid{grid-template-columns:1fr}.ai-assistant-panel{padding:10px 9px calc(20px + env(safe-area-inset-bottom,0px))}}
+
 </style>
 </head>
 <body>
@@ -311,6 +325,7 @@ body.career-tools-lock{overflow:hidden}
   <button class="drawer-link" type="button" data-view="my-jobs"><span class="nav-icon">🏢</span><span class="nav-copy"><span class="nav-title">إعلاناتي كصاحب عمل</span><span class="nav-sub">تابع حالة الوظائف التي نشرتها</span></span></button>
   <button class="drawer-link" type="button" data-view="help"><span class="nav-icon">❓</span><span class="nav-copy"><span class="nav-title">دليل الاستخدام والأسئلة الشائعة</span><span class="nav-sub">إرشادات للباحثين وأصحاب العمل</span></span></button>
   <button class="drawer-link" type="button" id="careerToolsToggle" aria-controls="careerToolsDrawer" aria-expanded="false"><span class="nav-icon">🧰</span><span class="nav-copy"><span class="nav-title">مركز التميز وأدوات الباحث</span><span class="nav-sub">٣٥ أداة للتقديم ومقارنة العروض</span></span></button>
+  <button class="drawer-link" type="button" id="aiAssistantToggle" aria-controls="aiAssistantPanel" aria-expanded="false"><span class="nav-icon">🤖</span><span class="nav-copy"><span class="nav-title">المساعد الذكي للشغل</span><span class="nav-sub">وظائف مناسبة وسيرة ورسائل ومقابلات</span></span></button>
   <hr class="drawer-separator">
   <button class="drawer-link" type="button" data-view="admin"><span class="nav-icon">🔐</span><span class="nav-copy"><span class="nav-title">لوحة الإدارة</span><span class="nav-sub">للمسؤول المعتمد فقط</span></span></button>
  </nav>
@@ -455,6 +470,39 @@ body.career-tools-lock{overflow:hidden}
 <button type="button" id="backToTopBtn" class="back-to-top" aria-label="العودة إلى أعلى الصفحة" title="العودة للأعلى" hidden>↑</button>
 <div id="reportModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="reportTitle"><div class="modal-card"><h2 id="reportTitle" class="section-title">🚨 الإبلاغ عن إعلان</h2><p id="reportModalJob" class="notice"></p><label for="reportReason">سبب البلاغ *</label><textarea id="reportReason" maxlength="500" placeholder="اكتب سبب البلاغ بوضوح..." required></textarea><div class="modal-actions"><button id="sendReportBtn" class="primary" type="button">إرسال البلاغ</button><button id="cancelReportBtn" class="secondary" type="button">إلغاء</button></div><div id="reportModalStatus" class="status-message" role="status" aria-live="polite"></div></div></div>
 <div id="applicationModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="applicationTitle"><div class="modal-card"><h2 id="applicationTitle" class="section-title">📨 التقديم داخل المنصة</h2><p id="applicationJobTitle" class="notice"></p><p class="notice">اختياري بالإضافة إلى واتساب. بياناتك ستظهر لصاحب الإعلان فقط وللإدارة عند الحاجة، ويمكن لصاحب العمل تحديث حالة طلبك.</p><label for="applicantName">الاسم الكامل *</label><input id="applicantName" maxlength="100" autocomplete="name" required placeholder="اكتب اسمك"><label for="applicantPhone">رقم هاتف للتواصل *</label><input id="applicantPhone" maxlength="20" inputmode="tel" autocomplete="tel" required placeholder="01012345678"><div class="modal-actions"><button id="sendApplicationBtn" class="primary" type="button">إرسال الطلب</button><button id="cancelApplicationBtn" class="secondary" type="button">إلغاء</button></div><div id="applicationModalStatus" class="status-message" role="status" aria-live="polite"></div></div></div>
+
+<section id="aiAssistantPanel" class="ai-assistant-panel" role="dialog" aria-modal="true" aria-label="المساعد الذكي للشغل" aria-hidden="true" inert>
+ <div class="panel-heading"><button type="button" class="secondary" id="aiAssistantClose" aria-label="إغلاق المساعد الذكي">✕ إغلاق</button><div class="heading-icon">🤖</div><div><h2 class="section-title">المساعد الذكي للشغل</h2><div class="subtitle">مساعد عملي بالعربي للبحث والتقديم والاستعداد للمقابلة</div></div></div>
+ <div class="ai-assistant-hero"><span class="ai-assistant-badge">مساعد مهني تجريبي</span><h2>خلّي خطوات الشغل أسهل</h2><p>اختار المهمة، اكتب معلومات بسيطة، وخد اقتراحًا جاهزًا تقدر تعدله وتنسخه.</p></div>
+ <div class="panel">
+  <label for="aiAssistantTask">عايز المساعد يساعدك في إيه؟</label>
+  <select id="aiAssistantTask">
+   <option value="jobs">ترشيح وظائف منشورة مناسبة ليا</option>
+   <option value="cv">كتابة ملخص للسيرة الذاتية</option>
+   <option value="apply">كتابة رسالة تقديم على وظيفة</option>
+   <option value="interview">الاستعداد لمقابلة عمل</option>
+   <option value="review">مراجعة إعلان وتحذيري من العلامات المقلقة</option>
+   <option value="rewrite">تحسين صياغة إعلان وظيفة لصاحب العمل</option>
+  </select>
+  <div class="ai-assistant-grid">
+   <div><label for="aiAssistantRole">الوظيفة أو المجال</label><input id="aiAssistantRole" maxlength="100" placeholder="مثال: كاشير أو مبيعات"></div>
+   <div><label for="aiAssistantArea">المنطقة</label><input id="aiAssistantArea" maxlength="100" placeholder="مثال: المنصورة"></div>
+   <div><label for="aiAssistantExperience">خبرتك</label><input id="aiAssistantExperience" maxlength="300" placeholder="مثال: ٣ سنين كاشير"></div>
+   <div><label for="aiAssistantSkills">مهاراتك</label><input id="aiAssistantSkills" maxlength="300" placeholder="مثال: التعامل مع العملاء والحسابات"></div>
+  </div>
+  <label for="aiAssistantDetails">تفاصيل إضافية أو نص الإعلان</label>
+  <textarea id="aiAssistantDetails" maxlength="4000" rows="5" placeholder="اكتب الراتب أو مواعيد العمل أو نص الإعلان أو تفاصيل الوظيفة هنا..."></textarea>
+  <button type="button" class="primary" id="aiAssistantRun">✨ جهّز المساعدة</button>
+  <p class="ai-assistant-note">النسخة الحالية تستخدم الوظائف المنشورة وقواعد إرشادية داخل الموقع؛ لا ترسل بياناتك إلى خدمة خارجية. راجع النص الناتج قبل إرساله، ولا تشارك كلمات المرور أو بياناتك الحساسة.</p>
+ </div>
+ <div class="panel">
+  <div class="panel-heading"><div class="heading-icon">💡</div><div><h3 class="section-title">النتيجة</h3><div class="subtitle">تقدر تعدّلها أو تنسخها</div></div></div>
+  <div id="aiAssistantOutput" class="ai-assistant-output" role="status" aria-live="polite">اختار نوع المساعدة واضغط «جهّز المساعدة».</div>
+  <button type="button" class="secondary" id="aiAssistantCopy" disabled>📋 نسخ النتيجة</button>
+ </div>
+</section>
+<button type="button" id="aiAssistantBackdrop" class="ai-assistant-backdrop" aria-label="إغلاق المساعد الذكي" hidden></button>
+
 <footer><strong>شغل الدقهلية</strong><br>منصة محلية لعرض فرص العمل في الدقهلية<br>© جميع الحقوق محفوظة</footer>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
@@ -706,6 +754,66 @@ startApp();
  var menu=document.getElementById("openMenu"),drawer=document.getElementById("sideDrawer"),backdrop=document.getElementById("drawerBackdrop");
  if(menu&&!menu.dataset.menuBound){menu.dataset.menuBound="true";menu.addEventListener("click",function(){if(!drawer)return;var opening=!drawer.classList.contains("open");drawer.classList.toggle("open",opening);drawer.setAttribute("aria-hidden",String(!opening));drawer.inert=!opening;if(backdrop)backdrop.classList.toggle("open",opening);menu.setAttribute("aria-expanded",String(opening));document.body.style.overflow=opening?"hidden":""})}
  if(backdrop&&!backdrop.dataset.backdropBound){backdrop.dataset.backdropBound="true";backdrop.addEventListener("click",function(){if(drawer){drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");drawer.inert=true}backdrop.classList.remove("open");if(menu)menu.setAttribute("aria-expanded","false");document.body.style.overflow=""})}
+
+/* المساعد الذكي: أدوات إرشادية محلية بدون إرسال بيانات لخدمة خارجية */
+const aiAssistantPanel=document.getElementById("aiAssistantPanel");
+const aiAssistantToggle=document.getElementById("aiAssistantToggle");
+const aiAssistantClose=document.getElementById("aiAssistantClose");
+const aiAssistantBackdrop=document.getElementById("aiAssistantBackdrop");
+const aiAssistantOutput=document.getElementById("aiAssistantOutput");
+const aiAssistantCopy=document.getElementById("aiAssistantCopy");
+function setAiAssistantOpen(open){
+ if(!aiAssistantPanel)return;
+ aiAssistantPanel.classList.toggle("ai-assistant-open",open);
+ aiAssistantPanel.setAttribute("aria-hidden",String(!open));
+ if(open)aiAssistantPanel.removeAttribute("inert");else aiAssistantPanel.setAttribute("inert","");
+ aiAssistantBackdrop.hidden=!open;
+ aiAssistantToggle?.setAttribute("aria-expanded",String(open));
+ document.body.style.overflow=open?"hidden":"";
+ if(open){const drawer=document.getElementById("sideDrawer"),drawerBackdrop=document.getElementById("drawerBackdrop");if(drawer?.classList.contains("open")){drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");drawer.setAttribute("inert","");drawerBackdrop?.classList.remove("open");document.body.classList.remove("drawer-open")}aiAssistantClose?.focus()}else aiAssistantToggle?.focus();
+}
+aiAssistantToggle?.addEventListener("click",()=>setAiAssistantOpen(!aiAssistantPanel?.classList.contains("ai-assistant-open")));
+aiAssistantClose?.addEventListener("click",()=>setAiAssistantOpen(false));
+aiAssistantBackdrop?.addEventListener("click",()=>setAiAssistantOpen(false));
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&aiAssistantPanel?.classList.contains("ai-assistant-open"))setAiAssistantOpen(false)});
+function aiValue(id){return String(document.getElementById(id)?.value||"").trim()}
+function aiWords(value){return String(value||"").toLocaleLowerCase("ar").split(/[^\p{L}\p{N}]+/u).filter(x=>x.length>1)}
+function aiSetOutput(value){aiAssistantOutput.textContent=value;aiAssistantCopy.disabled=!String(value||"").trim()}
+function aiBuildHelp(){
+ const task=aiValue("aiAssistantTask"),role=aiValue("aiAssistantRole"),area=aiValue("aiAssistantArea"),experience=aiValue("aiAssistantExperience"),skills=aiValue("aiAssistantSkills"),details=aiValue("aiAssistantDetails");
+ const roleText=role||"الوظيفة المناسبة";const areaText=area||"المنطقة المناسبة ليك";const expText=experience||"لديّ خبرة أو استعداد للتعلم";const skillsText=skills||"التواصل الجيد والالتزام وسرعة التعلم";
+ if(task==="jobs"){
+  const words=aiWords([role,area,details].join(" "));
+  const pool=(Array.isArray(allJobs)?allJobs:[]).filter(j=>j.status==="approved"&&(!expiry(j)||expiry(j).getTime()>Date.now()));
+  const matches=pool.map(j=>({j,score:words.reduce((n,w)=>n+([j.title,j.company,j.category,j.area,j.details].join(" ").toLocaleLowerCase("ar").includes(w)?1:0),0)})).filter(x=>!words.length||x.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
+  if(!matches.length){aiSetOutput("مش لاقي حاليًا إعلان منشور يطابق الكلمات اللي كتبتها. جرّب تسيب خانة الوظيفة فاضية أو تكتب مسمى أبسط، وافتح صفحة الوظائف للتأكد من أحدث الإعلانات.");return}
+  aiSetOutput("لقيت لك "+matches.length+" إعلان مناسب أو قريب من بحثك:\n\n"+matches.map(({j},i)=>(i+1)+". "+(j.title||"وظيفة")+(j.company?" — "+j.company:"")+(j.area?"\n📍 "+j.area:"")+(j.salary?"\n💰 "+j.salary:"")+"\n"+(j.category?"التخصص: "+j.category+"\n":"")+"افتح الإعلان من صفحة الوظائف وراجع التفاصيل والتواصل قبل التقديم.").join("\n\n"));return;
+ }
+ if(task==="cv"){
+  aiSetOutput("ملخص مهني مقترح للسيرة الذاتية:\n\nأسعى للعمل في مجال "+roleText+"، وأمتلك "+expText+". لدي مهارات في "+skillsText+"، وأحرص على الالتزام بالمواعيد، والتعامل باحترام مع العملاء والزملاء، والتعلم السريع وتحمل المسؤولية. أبحث عن فرصة في "+areaText+" أستطيع من خلالها تطوير خبرتي وتحقيق نتائج جيدة لفريق العمل.\n\nعدّل أي معلومة لا تعبّر عن خبرتك الحقيقية قبل استخدام النص.");return;
+ }
+ if(task==="apply"){
+  aiSetOutput("السلام عليكم،\nحابب أتقدم لوظيفة "+roleText+(area?" في "+area:"")+". عندي "+expText+"، ومن مهاراتي "+skillsText+". أنا مهتم بالفرصة ومستعد أوضح تفاصيل خبرتي وأعرف من حضرتكم شروط الوظيفة ومواعيد العمل والراتب. شكرًا لحضرتكم.\n\nالاسم: [اكتب اسمك]\n\nراجع الرسالة وأضف فقط معلومات صحيحة عنك قبل إرسالها.");return;
+ }
+ if(task==="interview"){
+  const questions=["عرّفنا بنفسك وبخبرتك في "+roleText+".","احكي عن موقف تعاملت فيه مع عميل أو مشكلة في الشغل، وإزاي حلّيتها.","إيه اللي يخليك مناسب للوظيفة دي؟ اربط إجابتك بمهاراتك: "+skillsText+".","إيه مواعيد العمل والمهام والراتب المتوقع بالنسبة لك؟"];
+  aiSetOutput("تدريب مقابلة لوظيفة "+roleText+"\n\n"+questions.map((q,i)=>(i+1)+". "+q).join("\n\n")+"\n\nطريقة التدريب: جاوب بصوتك في ٣–٥ جمل، واذكر مثالًا حقيقيًا من خبرتك، وتجنب اختلاق خبرات أو أرقام. حضّر أيضًا سؤالًا عن الراتب وساعات العمل والإجازات وطبيعة التعاقد.");return;
+ }
+ if(task==="review"){
+  if(!details){aiSetOutput("الصق نص إعلان الوظيفة في خانة التفاصيل عشان أراجع العلامات الظاهرة فيه. ما تبعتش بياناتك الشخصية.");return}
+  const checks=[["طلب فلوس مقدمًا",/رسوم|ادفع|تحويل مبلغ|مقدم|تأمين قبل التعيين|فلوس قبل/i],["راتب مبالغ فيه أو غير محدد الشروط",/مرتب يصل|دخل مضمون|بدون خبرة.*d{4,}|راتب خيالي/i],["بيانات جهة العمل غير واضحة",/الشركة|اسم المكان|العنوان|مقر العمل/i],["طلب بيانات حساسة",/كلمة المرور|رمز التحقق|بيانات البطاقة|رقم سري/i]];
+  const flagged=checks.filter(([label,re])=>label==="بيانات جهة العمل غير واضحة"?!re.test(details):re.test(details)).map(([label])=>label);
+  aiSetOutput("مراجعة أولية للإعلان (مش حكم نهائي):\n\n"+(flagged.length?"راجع النقاط دي بعناية:\n• "+flagged.join("\n• "):"ما ظهرتش في النص المختصر علامات التحذير المحددة هنا، لكن ده لا يضمن إن الإعلان موثوق.")+"\n\nقبل التقديم: اتأكد من اسم الشركة وعنوانها، اسأل عن الراتب وساعات العمل والإجازات، وما تدفعش رسوم توظيف أو تشارك كلمات مرور أو أكواد تحقق. التقييم آلي وبسيط وقد لا يكتشف كل المخاطر.");return;
+ }
+ if(task==="rewrite"){
+  if(!details){aiSetOutput("اكتب تفاصيل الإعلان الحالي في خانة التفاصيل، مثل المسمى والمهام والمنطقة والراتب وساعات العمل وطريقة التقديم.");return}
+  aiSetOutput("صياغة أوضح مقترحة — املأ البيانات الناقصة فقط بالمعلومات الحقيقية:\n\nالمسمى الوظيفي: "+roleText+"\nمكان العمل: "+areaText+"\n\nوصف الوظيفة:\n"+details+"\n\nالمهام والمسؤوليات:\n[اكتب أهم ٣ مهام]\n\nالمتطلبات:\n[اكتب الخبرة والمهارات المطلوبة بوضوح]\n\nالراتب والمزايا: [اكتب الراتب أو نطاقه إن أمكن]\nمواعيد العمل والإجازات: [وضّحها]\nطريقة التقديم: [رقم أو رابط رسمي]\n\nنصيحة: الإعلان الواضح يذكر تفاصيل حقيقية ولا يطلب من المتقدم رسومًا.");return;
+ }
+ aiSetOutput("اختار نوع المساعدة من القائمة، وبعدها اضغط «جهّز المساعدة».");
+}
+document.getElementById("aiAssistantRun")?.addEventListener("click",()=>{try{aiBuildHelp()}catch(error){console.error("AI assistant helper error",error);aiSetOutput("حصلت مشكلة بسيطة في تجهيز النتيجة. جرّب مرة تانية أو حدّث الصفحة.")}});
+aiAssistantCopy?.addEventListener("click",async()=>{const value=aiAssistantOutput?.textContent||"";if(!value.trim())return;try{await navigator.clipboard.writeText(value);aiAssistantCopy.textContent="✅ تم النسخ"}catch(error){const range=document.createRange();range.selectNodeContents(aiAssistantOutput);const selection=window.getSelection();selection?.removeAllRanges();selection?.addRange(range);aiAssistantCopy.textContent="حدّد النص واضغط نسخ من القائمة"}setTimeout(()=>{aiAssistantCopy.textContent="📋 نسخ النتيجة"},1800)});
+
 })();
 </script>
 <button type="button" id="careerToolsBackdrop" class="career-tools-backdrop" aria-label="إغلاق مركز التميز" hidden></button>
