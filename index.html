@@ -267,14 +267,12 @@ button:active,.action-link:active{transform:translateY(1px) scale(.99)}
 
 .career-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.career-tool{min-width:0;border:1px solid var(--line);border-radius:14px;padding:13px;background:var(--surface-soft)}.career-tool h3{font-size:15px;margin:0 0 6px;color:var(--green)}.career-tool p{font-size:13px;line-height:1.7;margin:5px 0 10px;color:var(--muted)}.career-tool label{display:block;font-size:12px;font-weight:700;margin:8px 0 4px}.career-tool input:not([type=checkbox]){width:100%;min-width:0;box-sizing:border-box;padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--text)}.career-tool button{margin-top:8px;width:100%}.career-tool .tool-result{font-weight:700;color:var(--green2);overflow-wrap:anywhere}.career-tool small{font-size:11px;color:var(--muted);line-height:1.5;display:block}.career-tool ol{padding-inline-start:22px;font-size:13px;line-height:1.9}.career-tool .tool-checks label{display:flex;align-items:flex-start;gap:7px;line-height:1.6;font-weight:500}.career-tool .tool-checks input{margin-top:5px;flex:0 0 auto}.career-tool details{border-top:1px solid var(--line);padding:8px 0;font-size:13px}.career-tool summary{cursor:pointer;font-weight:700;color:var(--green)}.career-tool details p{margin-bottom:0}.goal-counter{display:flex;align-items:center;justify-content:center;gap:14px}.goal-counter button{width:42px;min-width:42px;margin:0;font-size:20px}.goal-counter strong{font-size:25px;color:var(--green);min-width:28px;text-align:center}@media(max-width:560px){.career-tools-grid{grid-template-columns:1fr}.career-tool{padding:14px}}
 
-.career-tools-panel{position:fixed!important;z-index:1201;inset-block:12px;inset-inline-end:12px;width:min(720px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 18px 60px rgba(0,0,0,.28);transform:translateX(calc(100% + 30px));visibility:hidden;opacity:0;transition:transform .24s ease,opacity .2s ease,visibility .24s; margin:0!important}
+
+.career-tools-panel{position:fixed!important;z-index:1201;top:0!important;bottom:0!important;inset-inline-end:0!important;inset-inline-start:auto!important;width:min(760px,100vw)!important;max-width:100vw;max-height:100dvh!important;height:100dvh;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 18px 60px rgba(0,0,0,.28);transform:translateX(110%);visibility:hidden;opacity:0;transition:transform .24s ease,opacity .2s ease,visibility .24s;margin:0!important;border-radius:0!important;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
 .career-tools-panel.career-tools-open{transform:translateX(0);visibility:visible;opacity:1}
-.career-tools-side-button{position:fixed;z-index:1200;inset-inline-end:0;top:42%;display:flex;align-items:center;gap:8px;writing-mode:vertical-rl;border:0;border-radius:12px 0 0 12px;padding:14px 10px;background:var(--green,#103b32);color:#fff;font-weight:800;box-shadow:0 5px 18px #0003;cursor:pointer}
-.career-tools-side-button span:first-child{font-size:20px}
 .career-tools-backdrop{position:fixed;inset:0;z-index:1200;background:rgba(8,18,15,.55);border:0;width:100%;height:100%;padding:0}
 .career-tools-close{margin-inline-start:auto!important;width:38px!important;min-width:38px!important;height:38px;padding:0!important}
 body.career-tools-lock{overflow:hidden}
-@media(min-width:700px){.career-tools-panel{inset-inline-end:18px;width:min(760px,calc(100vw - 36px));inset-block:18px;max-height:calc(100dvh - 36px)}}
 @media(prefers-reduced-motion:reduce){.career-tools-panel{transition:none}}
 
 .x-new-tool textarea{width:100%;box-sizing:border-box;resize:vertical;padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--text);font:inherit}.x-new-tool select{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--text)}.x-track-list{padding-inline-start:20px;font-size:12px;line-height:1.8}.x-track-list li{margin:5px 0;overflow-wrap:anywhere}.x-track-remove{width:auto!important;margin-inline-start:8px!important;padding:3px 8px!important;font-size:11px!important}
@@ -312,6 +310,7 @@ body.career-tools-lock{overflow:hidden}
   <button class="drawer-link" type="button" data-view="safety"><span class="nav-icon">🛡️</span><span class="nav-copy"><span class="nav-title">نصائح الأمان</span><span class="nav-sub">إزاي تتجنب إعلانات الشغل الوهمية</span></span></button>
   <button class="drawer-link" type="button" data-view="my-jobs"><span class="nav-icon">🏢</span><span class="nav-copy"><span class="nav-title">إعلاناتي كصاحب عمل</span><span class="nav-sub">تابع حالة الوظائف التي نشرتها</span></span></button>
   <button class="drawer-link" type="button" data-view="help"><span class="nav-icon">❓</span><span class="nav-copy"><span class="nav-title">دليل الاستخدام والأسئلة الشائعة</span><span class="nav-sub">إرشادات للباحثين وأصحاب العمل</span></span></button>
+  <button class="drawer-link" type="button" id="careerToolsToggle" aria-controls="careerToolsDrawer" aria-expanded="false"><span class="nav-icon">🧰</span><span class="nav-copy"><span class="nav-title">مركز التميز وأدوات الباحث</span><span class="nav-sub">٣٥ أداة للتقديم ومقارنة العروض</span></span></button>
   <hr class="drawer-separator">
   <button class="drawer-link" type="button" data-view="admin"><span class="nav-icon">🔐</span><span class="nav-copy"><span class="nav-title">لوحة الإدارة</span><span class="nav-sub">للمسؤول المعتمد فقط</span></span></button>
  </nav>
@@ -644,9 +643,9 @@ const backToTopButton=$("backToTopBtn");function updateBackToTop(){if(backToTopB
 
 const careerToolsPanel=document.querySelector(".career-tools-panel");
 const careerToolsToggle=$("careerToolsToggle"),careerToolsClose=$("careerToolsClose"),careerToolsBackdrop=$("careerToolsBackdrop");
-if(careerToolsPanel){careerToolsPanel.id="careerToolsDrawer";careerToolsPanel.setAttribute("role","dialog");careerToolsPanel.setAttribute("aria-label","عدة الباحث عن شغل");careerToolsPanel.setAttribute("aria-modal","true");document.body.appendChild(careerToolsPanel)}
+if(careerToolsPanel){careerToolsPanel.id="careerToolsDrawer";careerToolsPanel.setAttribute("role","dialog");careerToolsPanel.setAttribute("aria-label","مركز التميز وأدوات الباحث");careerToolsPanel.setAttribute("aria-modal","true")}
 function setCareerToolsOpen(open){if(!careerToolsPanel)return;careerToolsPanel.classList.toggle("career-tools-open",open);careerToolsBackdrop.hidden=!open;careerToolsToggle?.setAttribute("aria-expanded",String(open));document.body.classList.toggle("career-tools-lock",open);if(open)careerToolsClose?.focus();else careerToolsToggle?.focus()}
-careerToolsToggle?.addEventListener("click",()=>setCareerToolsOpen(!careerToolsPanel?.classList.contains("career-tools-open")));
+careerToolsToggle?.addEventListener("click",()=>{const open=!careerToolsPanel?.classList.contains("career-tools-open");setCareerToolsOpen(open);if(open){const sideDrawer=document.getElementById("sideDrawer");if(sideDrawer?.classList.contains("open")){sideDrawer.classList.remove("open");sideDrawer.setAttribute("aria-hidden","true");sideDrawer.setAttribute("inert","");document.body.classList.remove("drawer-open");const backdrop=document.getElementById("drawerBackdrop");if(backdrop)backdrop.hidden=true}}});
 careerToolsClose?.addEventListener("click",()=>setCareerToolsOpen(false));
 careerToolsBackdrop?.addEventListener("click",()=>setCareerToolsOpen(false));
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&careerToolsPanel?.classList.contains("career-tools-open"))setCareerToolsOpen(false)});
@@ -709,5 +708,5 @@ startApp();
  if(backdrop&&!backdrop.dataset.backdropBound){backdrop.dataset.backdropBound="true";backdrop.addEventListener("click",function(){if(drawer){drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");drawer.inert=true}backdrop.classList.remove("open");if(menu)menu.setAttribute("aria-expanded","false");document.body.style.overflow=""})}
 })();
 </script>
-<button type="button" id="careerToolsToggle" class="career-tools-side-button" aria-controls="careerToolsDrawer" aria-expanded="false"><span aria-hidden="true">🧰</span><span>مركز التميز</span></button><button type="button" id="careerToolsBackdrop" class="career-tools-backdrop" aria-label="إغلاق أدوات الباحث" hidden></button>
+<button type="button" id="careerToolsBackdrop" class="career-tools-backdrop" aria-label="إغلاق مركز التميز" hidden></button>
 </body></html>
