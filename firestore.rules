@@ -106,6 +106,24 @@ service cloud.firestore {
         && request.resource.data.get(field, 0) == resource.data.get(field, 0) + 1;
     }
 
+    // Minimal app usage telemetry. No names, emails, phone numbers, or IP addresses are stored.
+    match /appAnalytics/{eventId} {
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll(['kind', 'mode', 'deviceId', 'installed', 'createdAt', 'clientTime'])
+        && request.resource.data.keys().hasOnly(['kind', 'mode', 'deviceId', 'installed', 'createdAt', 'clientTime'])
+        && request.resource.data.kind in ['app_open', 'app_install']
+        && request.resource.data.mode in ['online', 'offline']
+        && request.resource.data.deviceId is string
+        && request.resource.data.deviceId.size() >= 8
+        && request.resource.data.deviceId.size() <= 100
+        && request.resource.data.installed is bool
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.clientTime is string
+        && request.resource.data.clientTime.size() <= 40;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
     match /jobs/{jobId} {
       allow read: if isAdmin() || resource.data.status == 'approved' || (signedIn() && resource.data.get('ownerUid', '') == request.auth.uid);
       allow create: if signedIn() && validJobCreate();
