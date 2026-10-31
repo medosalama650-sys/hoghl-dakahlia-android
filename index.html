@@ -875,7 +875,7 @@ const ADMIN_EMAIL="medosalama650@gmail.com",app=initializeApp(firebaseConfig);
 const appCheckSiteKey=document.querySelector('meta[name="firebase-app-check-site-key"]')?.content.trim()||"";
 if(appCheckSiteKey){try{initializeAppCheck(app,{provider:new ReCaptchaV3Provider(appCheckSiteKey),isTokenAutoRefreshEnabled:true})}catch(error){console.warn("Firebase App Check initialization skipped",error)}}
 const auth=getAuth(app),db=getFirestore(app),$=id=>document.getElementById(id);
-let allJobs=[],selectedReportJob=null,selectedApplicationJob=null,stopJobs=null,stopPending=null,stopReports=null,stopAllJobs=null,stopApplicantApplications=null,stopOwnerJobs=null,applicantApplicationSnapshotReady=false,applicantApplications=[],authTask=null,lastReportClick=0,savedIds=new Set();
+let allJobs=[],selectedReportJob=null,selectedApplicationJob=null,stopJobs=null,stopPending=null,stopReports=null,stopAllJobs=null,stopUsageAnalytics=null,stopApplicantApplications=null,stopOwnerJobs=null,applicantApplicationSnapshotReady=false,applicantApplications=[],authTask=null,lastReportClick=0,savedIds=new Set();
 let visibleJobLimit=20,lastJobFilterKey="";
 let userCoords=null,previousApprovedIds=null,sharedJobHandled=false,alertPrefs=loadAlertPrefs(),nearbyMode=false,installPromptEvent=null,savedOnlyMode=false,appliedOnlyMode=false,hideAppliedMode=false,recentOnlyMode=false;let adminCounts={total:0,approved:0,pending:0,reports:0};
 let adminAnalyticsJobs=[];let adminDuplicatePhones=new Set();
@@ -959,7 +959,7 @@ $("sendReportBtn").addEventListener("click",async()=>{const reason=$("reportReas
 
 // Usage analytics: anonymous local device identifier; offline events are queued and synced later.
 const USAGE_DEVICE_KEY="shoghlUsageDeviceV1",USAGE_QUEUE_KEY="shoghlUsageQueueV1";
-let appOpenTracked=false,stopUsageAnalytics=null;
+let appOpenTracked=false;
 function usageDeviceId(){try{let id=localStorage.getItem(USAGE_DEVICE_KEY);if(!id){id=(crypto?.randomUUID?.()||("d"+Date.now().toString(36)+Math.random().toString(36).slice(2)));localStorage.setItem(USAGE_DEVICE_KEY,id)}return id}catch(_){return "session-"+Math.random().toString(36).slice(2)}}
 function usageInstalled(){return window.matchMedia?.("(display-mode: standalone)")?.matches||window.navigator.standalone===true}
 function queueUsageEvent(kind,mode){try{const q=JSON.parse(localStorage.getItem(USAGE_QUEUE_KEY)||"[]");q.push({kind,mode,deviceId:usageDeviceId(),installed:usageInstalled(),occurredAt:new Date().toISOString()});localStorage.setItem(USAGE_QUEUE_KEY,JSON.stringify(q.slice(-250)))}catch(error){console.warn("Usage event queue unavailable",error)}}
