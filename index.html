@@ -959,7 +959,7 @@ $("sendReportBtn").addEventListener("click",async()=>{const reason=$("reportReas
 
 // Usage analytics: anonymous local device identifier; offline events are queued and synced later.
 const USAGE_DEVICE_KEY="shoghlUsageDeviceV1",USAGE_QUEUE_KEY="shoghlUsageQueueV1";
-let appOpenTracked=false;
+let appOpenTracked=false,stopUsageAnalytics=null;
 function usageDeviceId(){try{let id=localStorage.getItem(USAGE_DEVICE_KEY);if(!id){id=(crypto?.randomUUID?.()||("d"+Date.now().toString(36)+Math.random().toString(36).slice(2)));localStorage.setItem(USAGE_DEVICE_KEY,id)}return id}catch(_){return "session-"+Math.random().toString(36).slice(2)}}
 function usageInstalled(){return window.matchMedia?.("(display-mode: standalone)")?.matches||window.navigator.standalone===true}
 function queueUsageEvent(kind,mode){try{const q=JSON.parse(localStorage.getItem(USAGE_QUEUE_KEY)||"[]");q.push({kind,mode,deviceId:usageDeviceId(),installed:usageInstalled(),occurredAt:new Date().toISOString()});localStorage.setItem(USAGE_QUEUE_KEY,JSON.stringify(q.slice(-250)))}catch(error){console.warn("Usage event queue unavailable",error)}}
